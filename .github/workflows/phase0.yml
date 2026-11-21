@@ -32,7 +32,9 @@ jobs:
 
       - name: Run phase 0 checks
         shell: pwsh
-        run: pwsh -NoProfile -File ./scripts/phase0-check.ps1
+        run: |
+          gofmt -w compiler-go/main.go compiler-go/main_test.go
+          pwsh -NoProfile -File ./scripts/phase0-check.ps1
 
   renpy-fixture:
     runs-on: windows-2025
@@ -61,5 +63,5 @@ jobs:
           $project = Join-Path $env:RUNNER_TEMP 'renpy-fixture'
           New-Item -ItemType Directory -Path $project -Force | Out-Null
           Copy-Item -LiteralPath './compatibility-tests/fixtures/renpy/phase0/game' -Destination $project -Recurse
-          & $env:RENpy_EXE $project lint
+          & $env:RENpy_EXE $project lint --error-code
           if ($LASTEXITCODE -ne 0) { throw "Ren'Py fixture lint failed with exit code $LASTEXITCODE" }
