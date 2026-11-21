@@ -80,6 +80,7 @@ jobs:
           @'
           init python:
               config.window_title = "SuiYu phase 0 fixture"
+              config.quit_action = renpy.quit
           '@ | Set-Content -LiteralPath (Join-Path $project 'game/ci_window_title.rpy') -Encoding utf8
           $process = Start-Process -FilePath $env:RENpy_EXE -ArgumentList @($project, 'run', '--savedir', $saveDir) -PassThru
           Start-Sleep -Seconds 8
