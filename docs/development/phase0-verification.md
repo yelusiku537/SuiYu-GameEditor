@@ -57,10 +57,10 @@ GUI 观察必须记录标题界面、文本 `SuiYu phase 0 fixture`、继续后�
 ## 未完成证据与责任
 
 - Ren'Py 官方 fork：`yelusiku537/renpy` 已创建且 API 坐标已记录；仍需在网络可用时完成完整 clone，并记录 `git rev-parse --is-shallow-repository`、远程头和祖先检查退出码。
-- Ren'Py SDK：版本、下载页、归档 SHA-256、对应 upstream tag 和完整提交 SHA 已登记；已实测官方 URL/校验文件可访问，但完整下载受网络吞吐限制，仍需要在可用网络或缓存环境完成实际下载、校验、lint 和 GUI 运行。
+- Ren'Py SDK：版本、下载页、归档 SHA-256、对应 upstream tag 和完整提交 SHA 已登记；GitHub Actions 已完成实际下载、校验、解压、lint 和自动 GUI smoke。人工桌面观察仍未验证。
 - Windows 工具链：Go、Rust 1.100.0、rustfmt、Git、PowerShell 7 已记录并通过脚本；`where.exe link/cl` 未单独定位，但 Rust MSVC 构建已通过。
-- CI：成功运行 [44918120739](https://github.com/yelusiku537/SuiYu-GameEditor/actions/runs/44918120739) 已取得；此前格式违规、单测失败探针也已在隔离副本中得到非零退出码。
-- GUI：自动 GUI smoke 已通过；仍没有人工桌面观察记录，因此不能把自动 smoke 描述为人工验收。
+- CI：成功运行 [44918120739](https://github.com/yelusiku537/SuiYu-GameEditor/actions/runs/44918120739) 已取得；此前格式违规、单测失败探针也已在隔离副本中得到非零退出码。后续 workflow 修复将重新取得一条全绿运行并验证格式失败信号未被自动改写。
+- GUI：自动 GUI smoke 已通过并会在后续运行中验证窗口标题从 fixture 标题推进到 dialogue 标记；仍没有人工桌面观察记录，因此不能把自动 smoke 描述为人工验收。
 
 Ren'Py 许可补证：GitHub API 在提交 `de379eb4f85a4930244786c715e581a1cb3fd374` 的 tree `67624ee443dd2dd03993d50e8e889459a528ad1e` 中核对了 `sphinx/source/license.rst`（blob `f4068def0d31d8d87cd9c7c9e665381b0cce1705`）。该文件说明 Ren'Py 本体的 MIT 条款、LGPL 部分和依赖清单；本阶段没有复制 Ren'Py 或 SDK 文件，因此没有新增随包分发内容。
 
@@ -75,7 +75,7 @@ Ren'Py 许可补证：GitHub API 在提交 `de379eb4f85a4930244786c715e581a1cb3f
 - 自动检查入口：`scripts/phase0-check.ps1`
 - 阶段 0 两个基线程序：`compiler-go/` 与 `runtime-rust/`
 
-在参考 fork、SDK 和 CI 证据补齐前，阶段 1 只能把 fixture 当作源码级输入；不得据此推断 Ren'Py 语义兼容性、运行时窗口行为或性能结果。
+在参考 fork 的完整历史 clone 和人工桌面观察补齐前，阶段 1 只能把 fixture 当作源码级输入；不得据此推断 Ren'Py 语义兼容性、运行时窗口行为或性能结果。
 
 ## 后续更新规则
 

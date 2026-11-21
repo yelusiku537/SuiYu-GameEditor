@@ -33,7 +33,6 @@ jobs:
       - name: Run phase 0 checks
         shell: pwsh
         run: |
-          gofmt -w compiler-go/main.go compiler-go/main_test.go
           pwsh -NoProfile -File ./scripts/phase0-check.ps1
 
   renpy-fixture:
@@ -81,6 +80,10 @@ jobs:
           init python:
               config.window_title = "SuiYu phase 0 fixture"
               config.quit_action = renpy.quit
+              def _ci_statement(name):
+                  if name == "say":
+                      config.window_title = "SuiYu phase 0 fixture - dialogue"
+              config.statement_callbacks.append(_ci_statement)
           '@ | Set-Content -LiteralPath (Join-Path $project 'game/ci_window_title.rpy') -Encoding utf8
           $process = Start-Process -FilePath $env:RENpy_EXE -ArgumentList @($project, 'run', '--savedir', $saveDir) -PassThru
           Start-Sleep -Seconds 8
@@ -90,8 +93,12 @@ jobs:
           $shell = New-Object -ComObject WScript.Shell
           if (-not $shell.AppActivate($window.Id)) { throw "Ren'Py GUI window could not be activated" }
           $shell.SendKeys('{ENTER}')
-          Start-Sleep -Seconds 3
-          $window.Refresh()
+          $deadline = [DateTime]::UtcNow.AddSeconds(5)
+          do {
+            Start-Sleep -Milliseconds 250
+            $window.Refresh()
+          } while ($window.MainWindowTitle -notlike '*SuiYu phase 0 fixture - dialogue*' -and [DateTime]::UtcNow -lt $deadline)
+          if ($window.MainWindowTitle -notlike '*SuiYu phase 0 fixture - dialogue*') { throw "Ren'Py GUI did not reach the fixture dialogue" }
           if ($window.HasExited) { throw "Ren'Py GUI exited before returning from the fixture label" }
           if (-not $window.CloseMainWindow()) { throw "Ren'Py GUI close request failed" }
           if (-not $window.WaitForExit(10000)) { Stop-Process -Id $window.Id -Force; throw "Ren'Py GUI did not close normally" }
