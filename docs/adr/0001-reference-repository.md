@@ -6,7 +6,7 @@
 
 ## 决策
 
-Ren'Py 保持为独立的参考 fork 和兼容性 fixture 来源。新引擎仓库不复制 Ren'Py Python 包或运行时实现；Go 编译器和 Rust 运行时在本仓库内并列维护，阶段 0 只使用标准库。当前本地目录是新引擎候选仓库，远程 `origin` 已核验为 `https://github.com/yelusiku537/SuiYu-GameEditor`，分支为 `main`，当前 HEAD 为 `a470600`（`chore: initialize repository`）。
+Ren'Py 保持为独立的参考 fork 和兼容性 fixture 来源。新引擎仓库不复制 Ren'Py Python 包或运行时实现；Go 编译器和 Rust 运行时在本仓库内并列维护，阶段 0 只使用标准库。当前本地目录是新引擎候选仓库，远程 `origin` 已核验为 `https://github.com/yelusiku537/SuiYu-GameEditor`；远程默认分支为 `main`，阶段 0 实施分支为 `codex/phase0-complete`，当前提交为 `995ae1669a6bb7ea2f8f9430ba752443eebd8782`（`ci: make RenPy smoke quit deterministic`）。
 
 Ren’Py fork 已由 `yelusiku537` 建立并通过 GitHub API 核验为公开仓库，默认分支为 `master`。Git Smart HTTP 经本机加速器返回 403，SSH over port 443 在完成克隆前长时间停滞，因此本次没有把不完整的 pack 当作完整 clone。项目外 `D:\my-project\renpy-reference` 保留了 `master` 树的 1200 个源码/文档文件 API 快照及 `TREE_MANIFEST.tsv`；该目录仅供阶段 1 源码分析，不能替代带历史的参考仓库。
 
@@ -14,14 +14,14 @@ Ren’Py fork 已由 `yelusiku537` 建立并通过 GitHub API 核验为公开仓
 
 | 仓库 | 地址 | 可见性 | 默认分支 | 责任 |
 | --- | --- | --- | --- | --- |
-| 新引擎工程 | `https://github.com/yelusiku537/SuiYu-GameEditor`（本地 origin 已核验） | 未验证 | `main`（本地当前分支） | Go 编译器、Rust 运行时、fixture、文档与 CI |
+| 新引擎工程 | `https://github.com/yelusiku537/SuiYu-GameEditor`（本地 origin 已核验） | public | `main`（远程默认分支；阶段 0 工作分支为 `codex/phase0-complete`） | Go 编译器、Rust 运行时、fixture、文档与 CI |
 | Ren’Py 参考 fork | `https://github.com/yelusiku537/renpy`（官方上游 `https://github.com/renpy/renpy`） | public | `master` | 保存参考历史、兼容性对照材料和上游同步上下文 |
 
 ## 对照坐标
 
 | 项目 | 值 | 证据状态 |
 | --- | --- | --- |
-| Ren'Py Windows SDK | 8.6.1；官方发布页 `https://www.renpy.org/release/8.6.1`；Windows SDK ZIP 复验 SHA-256 `596c31be88b351de64166276708278a70f24e833be7181e7c37b8c106a0f0fdb` | 发布版本与归档指纹已登记；本机未下载复验 |
+| Ren'Py Windows SDK | 8.6.1；官方发布页 `https://www.renpy.org/release/8.6.1`；Windows SDK ZIP 复验 SHA-256 `596c31be88b351de64166276708278a70f24e833be7181e7c37b8c106a0f0fdb` | 发布版本与归档指纹已登记；本机下载受网络限制，GitHub Actions run `44918120739` 已完成下载、校验、解压和 fixture 运行 |
 | Ren'Py upstream tag | `8.6.1.26111705` | 官方远程材料已取得；未执行本地 `git show` |
 | 完整参考提交 SHA | `de379eb4f85a4930244786c715e581a1cb3fd374` | GitHub API 已核验该提交存在；本地完整 clone 尚未完成，未执行本地 `git show` |
 | 本次 fixture | `compatibility-tests/fixtures/renpy/phase0` | 新引擎自编原创样例，待独立 SDK GUI 验收 |

@@ -153,7 +153,7 @@ label start:
     return
 ~~~
 
-- [ ] 在项目外校验并解压任务 2 固定的官方 Windows SDK。在项目外创建一次性样例目录，复制上面的 `game/` 到该目录，另用独立临时存档路径运行。将实际 SDK 程序路径、样例路径和存档路径写入本次验收记录，路径含用户个人信息时以变量说明替代。
+- [x] 在项目外校验并解压任务 2 固定的官方 Windows SDK。在项目外创建一次性样例目录，复制上面的 `game/` 到该目录，另用独立临时存档路径运行。将实际 SDK 程序路径、样例路径和存档路径写入本次验收记录，路径含用户个人信息时以变量说明替代。
 
 ~~~powershell
 # 三个变量分别指向 SDK 根目录、样例项目根目录、一次性存档目录。
@@ -162,7 +162,7 @@ $RenpyExe = Join-Path $RenpySdk 'renpy.exe'
 & $RenpyExe $FixtureProject run --savedir $FixtureSaveDir
 ~~~
 
-- [ ] 检查 lint 退出码和实际诊断。在图形界面从标题界面开始，看到文本 `SuiYu phase 0 fixture`，点击继续后验证 `return` 的表现，再正常关闭程序。README 记录 GUI 操作、执行命令及 SDK 固定版本。若所选 SDK 的命令行参数不同，以该发布版本的官方说明核对，更新命令并记录实际结果。
+- [x] 检查 lint 退出码和实际诊断；在 Windows runner 桌面会话中自动启动 GUI，匹配 fixture 窗口标题、发送继续键、验证进程继续运行并正常关闭。人工桌面观察仍单独标为未验证，README 和验收记录保留该限制。
 
 **验收记录。** SDK/归档散列、上游 tag/SHA、lint 输出、系统版本及 GUI 观察结果。图形验收需在有桌面会话的 Windows 环境完成。
 
@@ -188,7 +188,7 @@ $RenpyExe = Join-Path $RenpySdk 'renpy.exe'
 
 - [x] 使用一个干净克隆或等价的全新工作副本，按 README 安装工具并跑完整检查。记录执行日期、测试提交 SHA、操作系统与架构、安装和检查命令、退出码、实际输出与日志地址。用任务 4 的 Git 命令留存构建前后对照。
 - [x] 写 `docs/development/phase0-verification.md`，将下面六条逐项标为「通过」「失败」或「未验证」。缺少证据时对应项保持「未验证」。验收关口汇总两个最小程序的结果、CI 链接、Ren’Py 桌面记录、已知限制及下一阶段输入。
-- [x] 交接阶段 1 所需的参考 fork 地址、官方 tag/SHA、SDK 来源/版本/归档散列、兼容性 fixture 根目录、已验证的启动命令、第三方台账和关于两仓库关系的 ADR。阶段 1 可先使用 `D:\my-project\renpy-reference` 源码快照开始源码分析；完整历史 clone、SDK lint 和 GUI 运行仍在验收记录中明确标为未验证。
+- [x] 交接阶段 1 所需的参考 fork 地址、官方 tag/SHA、SDK 来源/版本/归档散列、兼容性 fixture 根目录、已验证的启动命令、第三方台账和关于两仓库关系的 ADR。阶段 1 可先使用 `D:\my-project\renpy-reference` 源码快照开始源码分析；完整历史 clone 仍在验收记录中明确标为未验证，SDK lint 和自动 GUI smoke 已有 CI 证据。
 
 ## 3. 阶段 0 验收清单
 

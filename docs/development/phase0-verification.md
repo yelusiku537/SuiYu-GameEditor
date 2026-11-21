@@ -10,8 +10,8 @@
 
 | 项目 | 实测结果 |
 | --- | --- |
-| 当前分支 | `main` |
-| 当前提交 | `a470600 chore: initialize repository` |
+| 当前分支 | `codex/phase0-complete` |
+| 当前提交 | `995ae1669a6bb7ea2f8f9430ba752443eebd8782 ci: make RenPy smoke quit deterministic` |
 | 新引擎远程 | `origin=https://github.com/yelusiku537/SuiYu-GameEditor` |
 | Ren'Py fork | `https://github.com/yelusiku537/renpy` 已创建，public，默认分支 `master`，API 核验头为 `0be2c7103be5d537d9e6cad54ee44ce34c9422a` |
 | WSL Go | `go1.27.4 linux/amd64` |
@@ -27,8 +27,8 @@ Windows 目标构建必须在安装 Go、Rust MSVC 工具链和 Windows SDK 的�
 | 主计划原验收 | 状态 | 证据与限制 |
 | --- | --- | --- |
 | 新成员可按 README 在干净环境完成构建 | 通过 | 使用仓库外隔离 Go/Rust 工具链运行 `pwsh -NoProfile -File ./scripts/phase0-check.ps1`；格式、单测、构建和启动全部通过。 |
-| CI 无本地缓存完成最小项目构建 | 未验证 | workflow 和脚本已完成；当前工作区未提交/推送，因此没有可取得的 GitHub Actions 运行链接或日志。 |
-| Ren'Py 原版单独启动并运行最小示例 | 未验证 | 已从官方发布页确认 Windows ZIP URL 与 `checksums.txt` 中的 SHA-256 `596c31be88b351de64166276708278a70f24e833be7181e7c37b8c106a0f0fdb`。项目外下载多次受当前网络吞吐限制，未取得完整归档；因此未执行解压、lint 或桌面 GUI 观察。临时响应片段已确认是 ZIP 起始内容但远未达到 `163957166` 字节。 |
+| CI 无本地缓存完成最小项目构建 | 通过 | GitHub Actions run [44918120739](https://github.com/yelusiku537/SuiYu-GameEditor/actions/runs/44918120739) 在 Windows runner `windows-2025-vs2026` 上完成；`windows-baseline` 与 `renpy-fixture` 均成功，Go/Rust 基线和 Ren'Py SDK 下载、SHA-256、lint、自动 GUI smoke 均通过。 |
+| Ren'Py 原版单独启动并运行最小示例 | 通过（自动 GUI smoke） | GitHub Actions run [44918120739](https://github.com/yelusiku537/SuiYu-GameEditor/actions/runs/44918120739) 使用固定 SDK URL 和 SHA-256 完成下载、解压、lint，并在 Windows runner 桌面会话中启动 fixture，匹配窗口标题、发送继续键、验证进程仍运行后正常关闭。该证据是自动 GUI smoke，不等同于人工桌面观察；人工观察仍未验证。 |
 | 所有复制、参考或链接的第三方内容都有来源 | 通过 | Ren'Py 参考提交的许可页已通过 GitHub API 核对；许可证台账记录 MIT/LGPL/依赖说明及 SDK SHA-256。阶段 0 未复制 SDK、MyGo、SDL3、wgpu 或素材文件。 |
 | Git 状态不出现构建缓存和个人文件 | 通过 | 构建输出和 Go/Cargo 缓存均写入仓库外临时目录；忽略探针逐项命中，构建后工作区只保留预期源码和文档变更。 |
 | 至少一份 ADR 解释两个仓库的关系 | 通过（本地文档） | [ADR 0001](../adr/0001-reference-repository.md) 已说明参考 fork、新引擎边界、只读 upstream 同步步骤、材料归属和未决证据。fork 已创建；完整历史 clone 仍未完成。 |
@@ -59,8 +59,8 @@ GUI 观察必须记录标题界面、文本 `SuiYu phase 0 fixture`、继续后�
 - Ren'Py 官方 fork：`yelusiku537/renpy` 已创建且 API 坐标已记录；仍需在网络可用时完成完整 clone，并记录 `git rev-parse --is-shallow-repository`、远程头和祖先检查退出码。
 - Ren'Py SDK：版本、下载页、归档 SHA-256、对应 upstream tag 和完整提交 SHA 已登记；已实测官方 URL/校验文件可访问，但完整下载受网络吞吐限制，仍需要在可用网络或缓存环境完成实际下载、校验、lint 和 GUI 运行。
 - Windows 工具链：Go、Rust 1.100.0、rustfmt、Git、PowerShell 7 已记录并通过脚本；`where.exe link/cl` 未单独定位，但 Rust MSVC 构建已通过。
-- CI：需要一次成功的 Windows runner 运行链接和日志；格式违规、单测失败各需有一次非零退出码证据，再撤销临时改动重跑。
-- GUI：需要有桌面会话的人工验收记录。无桌面会话时保持“未验证”，不能以 lint 或源码检查代替。
+- CI：成功运行 [44918120739](https://github.com/yelusiku537/SuiYu-GameEditor/actions/runs/44918120739) 已取得；此前格式违规、单测失败探针也已在隔离副本中得到非零退出码。
+- GUI：自动 GUI smoke 已通过；仍没有人工桌面观察记录，因此不能把自动 smoke 描述为人工验收。
 
 Ren'Py 许可补证：GitHub API 在提交 `de379eb4f85a4930244786c715e581a1cb3fd374` 的 tree `67624ee443dd2dd03993d50e8e889459a528ad1e` 中核对了 `sphinx/source/license.rst`（blob `f4068def0d31d8d87cd9c7c9e665381b0cce1705`）。该文件说明 Ren'Py 本体的 MIT 条款、LGPL 部分和依赖清单；本阶段没有复制 Ren'Py 或 SDK 文件，因此没有新增随包分发内容。
 
@@ -101,3 +101,12 @@ Ren'Py 许可补证：GitHub API 在提交 `de379eb4f85a4930244786c715e581a1cb3f
 - 检查命令：pwsh -NoProfile -File ./scripts/phase0-check.ps1
 - 退出码：0
 - 结果：Go/Rust 格式、单测、构建和启动全部通过；输出分别为 suiyu-go-phase0 / suiyu-rust-phase0
+
+## 2026-11-21 GitHub Actions 补证
+
+- 提交：`995ae1669a6bb7ea2f8f9430ba752443eebd8782`
+- 运行：[44918120739](https://github.com/yelusiku537/SuiYu-GameEditor/actions/runs/44918120739)
+- runner：`windows-2025-vs2026`，镜像版本 `20261116.315.1`
+- `windows-baseline`：通过；Go/Rust 格式、测试、构建和启动全部通过。
+- `renpy-fixture`：通过；官方 Ren'Py 8.6.1 SDK 下载与 SHA-256 校验、fixture lint、自动 GUI smoke 全部通过。
+- GUI smoke 关闭逻辑使用 CI 临时配置 `config.quit_action = renpy.quit`，用于绕过默认退出确认菜单；fixture 本身未修改。
