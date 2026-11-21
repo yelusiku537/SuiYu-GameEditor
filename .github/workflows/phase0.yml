@@ -84,12 +84,13 @@ jobs:
           $process = Start-Process -FilePath $env:RENpy_EXE -ArgumentList @($project, 'run', '--savedir', $saveDir) -PassThru
           Start-Sleep -Seconds 8
           if ($process.HasExited) { throw "Ren'Py GUI exited during startup with code $($process.ExitCode)" }
-          $process.Refresh()
-          if ([string]::IsNullOrWhiteSpace($process.MainWindowTitle)) { throw "Ren'Py GUI did not expose a window title" }
+          $window = Get-Process | Where-Object { $_.MainWindowTitle -and $_.MainWindowTitle -like '*SuiYu phase 0 fixture*' } | Select-Object -First 1
+          if ($null -eq $window) { throw "Ren'Py GUI did not expose the fixture window title" }
           $shell = New-Object -ComObject WScript.Shell
-          if (-not $shell.AppActivate($process.Id)) { throw "Ren'Py GUI window could not be activated" }
+          if (-not $shell.AppActivate($window.Id)) { throw "Ren'Py GUI window could not be activated" }
           $shell.SendKeys('{ENTER}')
           Start-Sleep -Seconds 3
-          if ($process.HasExited) { throw "Ren'Py GUI exited before returning from the fixture label" }
-          $shell.SendKeys('%{F4}')
-          if (-not $process.WaitForExit(10000)) { Stop-Process -Id $process.Id -Force; throw "Ren'Py GUI did not close normally" }
+          $window.Refresh()
+          if ($window.HasExited) { throw "Ren'Py GUI exited before returning from the fixture label" }
+          if (-not $window.CloseMainWindow()) { throw "Ren'Py GUI close request failed" }
+          if (-not $window.WaitForExit(10000)) { Stop-Process -Id $window.Id -Force; throw "Ren'Py GUI did not close normally" }
