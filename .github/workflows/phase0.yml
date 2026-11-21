@@ -63,5 +63,9 @@ jobs:
           $project = Join-Path $env:RUNNER_TEMP 'renpy-fixture'
           New-Item -ItemType Directory -Path $project -Force | Out-Null
           Copy-Item -LiteralPath './compatibility-tests/fixtures/renpy/phase0/game' -Destination $project -Recurse
-          & $env:RENpy_EXE $project lint --error-code
-          if ($LASTEXITCODE -ne 0) { throw "Ren'Py fixture lint failed with exit code $LASTEXITCODE" }
+          $stdout = Join-Path $env:RUNNER_TEMP 'renpy-lint.stdout.txt'
+          $stderr = Join-Path $env:RUNNER_TEMP 'renpy-lint.stderr.txt'
+          $process = Start-Process -FilePath $env:RENpy_EXE -ArgumentList @($project, 'lint', '--error-code') -Wait -PassThru -RedirectStandardOutput $stdout -RedirectStandardError $stderr
+          if (Test-Path $stdout) { Get-Content -LiteralPath $stdout }
+          if (Test-Path $stderr) { Get-Content -LiteralPath $stderr }
+          if ($process.ExitCode -ne 0) { throw "Ren'Py fixture lint failed with exit code $($process.ExitCode)" }
