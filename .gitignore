@@ -1,0 +1,9 @@
+github.txt
+
+# Local and generated files
+target/
+dist/
+build/
+.venv/
+__pycache__/
+*.pyc
