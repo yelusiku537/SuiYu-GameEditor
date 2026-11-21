@@ -1,0 +1,65 @@
+name: phase0
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  windows-baseline:
+    runs-on: windows-2025
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Go from go.mod
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: compiler-go/go.mod
+          cache: false
+
+      - name: Install Rust toolchain from rust-toolchain.toml
+        shell: pwsh
+        run: |
+          $toolchain = (Select-String -Path rust-toolchain.toml -Pattern 'channel\s*=\s*"([^"]+)"').Matches.Groups[1].Value
+          if ([string]::IsNullOrWhiteSpace($toolchain)) {
+            throw 'Unable to read Rust channel from rust-toolchain.toml'
+          }
+          rustup toolchain install $toolchain --profile minimal --component rustfmt
+          rustup show active-toolchain
+
+      - name: Run phase 0 checks
+        shell: pwsh
+        run: pwsh -NoProfile -File ./scripts/phase0-check.ps1
+
+  renpy-fixture:
+    runs-on: windows-2025
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download and verify Ren'Py SDK 8.6.1
+        shell: pwsh
+        run: |
+          $url = 'https://www.renpy.org/dl/8.6.1/renpy-8.6.1-sdk.zip'
+          $expected = '596c31be88b351de64166276708278a70f24e833be7181e7c37b8c106a0f0fdb'
+          $archive = Join-Path $env:RUNNER_TEMP 'renpy-8.6.1-sdk.zip'
+          Invoke-WebRequest -Uri $url -OutFile $archive
+          $actual = (Get-FileHash -LiteralPath $archive -Algorithm SHA256).Hash.ToLowerInvariant()
+          if ($actual -ne $expected) { throw "Ren'Py SDK SHA-256 mismatch: $actual" }
+          $sdk = Join-Path $env:RUNNER_TEMP 'renpy-sdk'
+          Expand-Archive -LiteralPath $archive -DestinationPath $sdk -Force
+          $exe = Get-ChildItem -LiteralPath $sdk -Filter renpy.exe -Recurse | Select-Object -First 1
+          if ($null -eq $exe) { throw 'renpy.exe not found after extraction' }
+          "RENpy_EXE=$($exe.FullName)" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8
+
+      - name: Run Ren'Py fixture lint
+        shell: pwsh
+        run: |
+          $project = Join-Path $env:RUNNER_TEMP 'renpy-fixture'
+          New-Item -ItemType Directory -Path $project -Force | Out-Null
+          Copy-Item -LiteralPath './compatibility-tests/fixtures/renpy/phase0/game' -Destination $project -Recurse
+          & $env:RENpy_EXE $project lint
+          if ($LASTEXITCODE -ne 0) { throw "Ren'Py fixture lint failed with exit code $LASTEXITCODE" }

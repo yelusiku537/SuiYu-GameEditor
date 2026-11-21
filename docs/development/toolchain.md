@@ -1,37 +1,36 @@
 # 阶段 0 工具链与版本台账
 
-本表只记录阶段 0 实际需要的工具。版本、提交、来源或安装事实无法从当前工作区核验时保留为 未验证，并注明负责人和补证动作。
+核验日期：2026-11-21（Asia/Shanghai）。阶段 0 的 Go/Rust 基线只使用标准库；MyGo Native UI、SDL3 和 wgpu 仅登记，不进入构建。
 
 ## 构建工具
 
 | 项目/工具 | 准确版本或完整 SHA | 官方来源 | 使用方式 | 进入阶段 0 构建 | 验证命令/状态 |
 | --- | --- | --- | --- | --- | --- |
-| Go | 未验证（补证后写入 compiler-go/go.mod） | 未验证 | Go 标准库 CLI 与测试 | 是 | go version; go env GOVERSION；当前未验证 |
-| Rust toolchain | 未验证（补证后写入 rust-toolchain.toml） | 未验证 | Rust 标准库 CLI 与测试 | 是 | rustc --version --verbose；当前未验证 |
-| rustfmt | 未验证 | 随 Rust toolchain | cargo fmt --check | 是 | rustfmt --version；当前未验证 |
-| Cargo | 未验证 | 随 Rust toolchain | cargo test, cargo build | 是 | cargo --version；当前未验证 |
-| Windows | 未验证 | Microsoft | 原生 Windows 目标构建环境 | 是 | Get-ComputerInfo；当前未验证 |
-| CPU 架构 | 未验证 | 主机事实 | 选择 Windows 构建目标 | 是 | Get-CimInstance Win32_OperatingSystem；当前未验证 |
-| PowerShell 7 | 未验证 | Microsoft | 执行 scripts/phase0-check.ps1 | 是 | $PSVersionTable.PSVersion；当前未验证 |
-| Git | 未验证 | Git SCM | 版本、远程、worktree 和 ignore 证据 | 是 | git --version; git status --short；当前未验证 |
-| Rust MSVC linker | 未验证 | Visual Studio / Windows SDK | Windows MSVC 目标链接 | 是 | rustc -vV; where.exe link; where.exe cl；当前未验证 |
-| Windows SDK | 未验证 | Microsoft | Windows 头文件和链接库 | 是 | 注册表 Installed Roots；当前未验证 |
+| Go | `go1.27.4` | `https://go.dev/dl/` | Go 标准库 CLI 与测试 | 是 | Windows `go version go1.27.4 windows/amd64`；使用仓库外隔离工具目录 |
+| Rust toolchain | `1.100.0` | `https://www.rust-lang.org/tools/install` | Rust 标准库 CLI 与测试 | 是 | Windows `rustc 1.100.0 (0ef1bc386 2026-11-09)`；rustup 使用官方 USTC 镜像完成安装 |
+| rustfmt | `1.11.0-stable (0ef1bc3860 2026-11-09)` | Rust toolchain | `cargo fmt --check` | 是 | Windows `rustfmt --version` 已核验 |
+| Cargo | `1.100.0 (3acc79c0c 2026-11-05)` | Rust toolchain | `cargo test`, `cargo build` | 是 | Windows `cargo --version` 已核验 |
+| Windows | Windows 11 Home，版本 `10.0.26300` | Microsoft | 原生 Windows 目标构建环境 | 是 | `Get-CimInstance Win32_OperatingSystem` 已核验 |
+| CPU 架构 | x64 | 主机事实 | Windows x64 目标 | 是 | `Win32_OperatingSystem.OSArchitecture` 已核验 |
+| PowerShell 7 | `7.6.6` | `https://github.com/PowerShell/PowerShell` | 执行 `scripts/phase0-check.ps1` | 是 | `$PSVersionTable.PSVersion` 已核验 |
+| Git | Windows `2.54.0.windows.1`；WSL `2.53.0` | `https://git-scm.com/download/win` | 版本、远程与 ignore 证据 | 是 | `git --version` 已核验 |
+| Rust MSVC linker / Windows SDK | 未单独定位 | Visual Studio / Microsoft | Rust Windows MSVC 链接 | 是 | `where.exe link`、`where.exe cl` 未找到；阶段 0 Rust MSVC 构建实际通过，具体 linker 来源待补 |
 
 ## 参考与兼容性材料
 
 | 项目/工具 | 准确版本或完整 SHA | 官方来源 | 使用方式 | 进入阶段 0 构建 | 验证命令/状态 |
 | --- | --- | --- | --- | --- | --- |
-| Ren'Py Windows SDK | 未验证 | 未验证 | 只作为兼容性 fixture 的参考运行环境 | 否 | 官方下载页、归档 SHA-256、SDK 自报版本；当前未验证 |
-| Ren'Py upstream tag | 未验证 | https://github.com/renpy/renpy（候选上游，待核验） | 与 SDK 对照提交关联 | 否 | git show <已核验完整 SHA>；当前未验证 |
-| Ren'Py fork owner/URL/default branch | 未验证 | 未验证 | 只读上游同步和历史保留 | 否 | git remote -v; git branch --show-current；当前未验证 |
-| MyGo Native UI | 未验证 | 未验证 | 仅登记候选依赖，不进入阶段 0 构建 | 否 | 由负责人提供权威项目地址、版本和许可证；未验证 |
-| SDL3 | 未验证 | 未验证 | 仅登记候选依赖，不进入阶段 0 构建 | 否 | 由负责人提供权威版本/提交和许可证；未验证 |
-| wgpu | 未验证 | 未验证 | 仅登记候选依赖，不进入阶段 0 构建 | 否 | 由负责人提供权威版本/提交和许可证；未验证 |
-| TypeScript / Monaco / CodeMirror / WebView | 不适用 | 不适用 | Web 备选未启用 | 否 | 不添加版本记录，直到 Web 方案实际启用 |
+| Ren'Py Windows SDK | `8.6.1`；Windows ZIP SHA-256 `596c31be88b351de64166276708278a70f24e833be7181e7c37b8c106a0f0fdb` | `https://www.renpy.org/release/8.6.1` | 独立 fixture lint/运行 | 否 | 官方发布页与 `checksums.txt` 已访问；完整 `163957166` 字节归档下载受当前网络吞吐限制，未完成解压、lint 和 GUI 验收 |
+| Ren'Py upstream tag | `8.6.1.26111705`; `de379eb4f85a4930244786c715e581a1cb3fd374` | `https://github.com/renpy/renpy` | 与 SDK 对照提交关联 | 否 | 官方远程材料已核验；本地未 clone |
+| Ren'Py fork | `https://github.com/yelusiku537/renpy`; public; default `master`; head `0be2c7103be5d537d9e6cad54ee44ce34c9422a` | 参考 fork | 只读上游同步和历史保留 | 否 | GitHub API 已核验；完整历史 clone 受代理限制未完成 |
+| MyGo Native UI | `v0.10.0`; `ebde9399baf2734b3361856a53f4036859973d1d` | `https://github.com/egoist/mygo`, `https://mygo.run` | 仅登记候选依赖 | 否 | 官方仓库与 MIT 许可证已核验 |
+| SDL3 | `release-3.4.20`; `f00dc919ca35b9756316e86c4777392de442f9b2` | `https://github.com/libsdl-org/SDL` | 仅登记候选依赖 | 否 | 官方 release 坐标已核验 |
+| wgpu | `v30.0.2`; `89f8a2be4a536503ed97451320cda16414044e31` | `https://github.com/gfx-rs/wgpu` | 仅登记候选依赖 | 否 | 官方 release 坐标已核验 |
+| TypeScript / Monaco / CodeMirror / WebView | 不适用 | 不适用 | Web 备选未启用 | 否 | 不加入版本记录 |
 
 ## 版本写入规则
 
-1. Go 版本确认后写入 compiler-go/go.mod 的 go 指令，并在本表保留完整版本来源。
-2. Rust 版本确认后同时更新 rust-toolchain.toml 和本表；文件必须保留 profile = minimal 与 components = rustfmt。
-3. MyGo Native UI、SDL3、wgpu 的身份或版本不能核验时，验收状态保持 未验证，不允许用猜测的坐标替代。
-4. Windows 构建、SDK、链接器和 PowerShell 证据必须来自实际主机命令；计划文本不是安装证据。
+1. Go 版本必须与 `compiler-go/go.mod` 的 `go` 指令一致。
+2. Rust 版本必须同时存在于 `rust-toolchain.toml`，并固定 `profile = "minimal"` 与 `components = ["rustfmt"]`。
+3. 外部依赖未实际引入前只登记来源，不放入阶段 0 构建。
+4. Windows 原生工具缺失时，验收记录必须标为未验证，不能用 WSL 版本替代 Windows 证据。

@@ -4,6 +4,15 @@ github.txt
 target/
 dist/
 build/
+tmp/
+cache/
+.local-assets/
+.local/
+.idea/
+.vscode/
+.env
+.env.local
+github.txt
 .venv/
 __pycache__/
 *.pyc
