@@ -41,6 +41,5 @@ Local fixture lint and GUI smoke passed. GitHub Actions installs a test-only
 say screen that renders `text what id "what"`; when that screen appears, the
 smoke reads `renpy.get_widget("say", "what").text` and requires an exact match.
 It also records the fixture's `return`, requests a normal window close, and
-requires process exit code 0. This stronger CI smoke remains unverified until
-the workflow on this revision passes; its run is recorded in
-`docs/development/phase0-verification.md`.
+requires process exit code 0. The strengthened CI smoke passed in run
+`44983989443` on commit `462b1fbb93630950db99d2fb7f9d30bbde170438`.
