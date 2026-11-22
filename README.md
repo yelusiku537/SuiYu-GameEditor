@@ -37,4 +37,6 @@ fixture 位于 `compatibility-tests/fixtures/renpy/phase0`，必须复制到项�
 
 ## 协作
 
+查看[总计划](renpy-vibe-engine-plan.md)和[各阶段详细计划](docs/superpowers/plans/README.md)。阶段任务编号可用于 Issue 认领和 PR 关联。
+
 格式、测试、fixture、许可证和提交约定见 [CONTRIBUTING.md](CONTRIBUTING.md)。第三方来源见 [许可证台账](LICENSES/THIRD_PARTY.md)。

@@ -2,7 +2,7 @@
 
 > 用途：直接交给 coding agent 执行。
 > 路线：研究 Ren'Py 行为，按功能闭环实现 Go 工具链 + Rust 游戏运行时，最后加入编辑器、插件和 UI 生态。
-> 状态：计划阶段。
+> 实施进度和可认领任务见[阶段计划索引](docs/superpowers/plans/README.md)。
 
 ## 0. Agent 执行规则
 
