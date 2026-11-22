@@ -35,6 +35,12 @@ segments with variables in committed records.
 With a Windows desktop session, launch the same project with the fixed SDK.
 Confirm that the title screen starts, the exact fixture text is visible, the
 next/continue action reaches the end of the script, and the window closes
-normally. The repository currently contains no SDK archive or desktop run
-evidence, so this acceptance remains **未验证** until a maintainer records
-the actual run.
+normally. The official SDK archive was verified on 2026-11-22 with SHA-256
+`596c31be88b351de64166276708278a70f24e833be7181e7c37b8c106a0f0fdb`.
+Local fixture lint and GUI smoke passed. GitHub Actions installs a test-only
+say screen that renders `text what id "what"`; when that screen appears, the
+smoke reads `renpy.get_widget("say", "what").text` and requires an exact match.
+It also records the fixture's `return`, requests a normal window close, and
+requires process exit code 0. This stronger CI smoke remains unverified until
+the workflow on this revision passes; its run is recorded in
+`docs/development/phase0-verification.md`.

@@ -1,6 +1,6 @@
 # 阶段 0 工具链与版本台账
 
-核验日期：2026-11-21（Asia/Shanghai）。阶段 0 的 Go/Rust 基线只使用标准库；MyGo Native UI、SDL3 和 wgpu 仅登记，不进入构建。
+核验日期：2026-11-22（Asia/Shanghai）。阶段 0 的 Go/Rust 基线只使用标准库；MyGo Native UI、SDL3 和 wgpu 仅登记，不进入构建。
 
 ## 构建工具
 
@@ -20,9 +20,9 @@
 
 | 项目/工具 | 准确版本或完整 SHA | 官方来源 | 使用方式 | 进入阶段 0 构建 | 验证命令/状态 |
 | --- | --- | --- | --- | --- | --- |
-| Ren'Py Windows SDK | `8.6.1`；Windows ZIP SHA-256 `596c31be88b351de64166276708278a70f24e833be7181e7c37b8c106a0f0fdb` | `https://www.renpy.org/release/8.6.1` | 独立 fixture lint/运行 | 否 | 官方发布页与 `checksums.txt` 已访问；完整 `163957166` 字节归档下载受当前网络吞吐限制，未完成解压、lint 和 GUI 验收 |
-| Ren'Py upstream tag | `8.6.1.26111705`; `de379eb4f85a4930244786c715e581a1cb3fd374` | `https://github.com/renpy/renpy` | 与 SDK 对照提交关联 | 否 | 官方远程材料已核验；本地未 clone |
-| Ren'Py fork | `https://github.com/yelusiku537/renpy`; public; default `master`; head `0be2c7103be5d537d9e6cad54ee44ce34c9422a` | 参考 fork | 只读上游同步和历史保留 | 否 | GitHub API 已核验；完整历史 clone 受代理限制未完成 |
+| Ren'Py Windows SDK | `8.6.1`；Windows ZIP SHA-256 `596c31be88b351de64166276708278a70f24e833be7181e7c37b8c106a0f0fdb` | `https://www.renpy.org/release/8.6.1` | 独立 fixture lint/运行 | 否 | 官方发布页、`checksums.txt` 与 GitHub Actions run `44920257611` 已核验；CI 完成归档下载、SHA-256、解压、lint 和 GUI smoke |
+| Ren'Py upstream tag | `8.6.1.26111705`（tag object `a2ded0b29fd1e0b61972469cfc558a910e717e3c`，peeled commit `de379eb4f85a4930244786c715e581a1cb3fd374`） | `https://github.com/renpy/renpy` | 与 SDK 对照提交关联 | 否 | `D:\my-project\renpy-reference-git` 本地 `git show` 已核验 |
+| Ren'Py fork | `https://github.com/yelusiku537/renpy`; public; default `master`; head `0be2c7103be5d537d9e6cad54ee44ce34c9422a` | 参考 fork | 只读上游同步和历史保留 | 否 | `D:\my-project\renpy-reference-git` 完整 clone：19,649 commits、`--is-shallow-repository=false`、`git fsck --full` 通过 |
 | MyGo Native UI | `v0.10.0`; `ebde9399baf2734b3361856a53f4036859973d1d` | `https://github.com/egoist/mygo`, `https://mygo.run` | 仅登记候选依赖 | 否 | 官方仓库与 MIT 许可证已核验 |
 | SDL3 | `release-3.4.20`; `f00dc919ca35b9756316e86c4777392de442f9b2` | `https://github.com/libsdl-org/SDL` | 仅登记候选依赖 | 否 | 官方 release 坐标已核验 |
 | wgpu | `v30.0.2`; `89f8a2be4a536503ed97451320cda16414044e31` | `https://github.com/gfx-rs/wgpu` | 仅登记候选依赖 | 否 | 官方 release 坐标已核验 |

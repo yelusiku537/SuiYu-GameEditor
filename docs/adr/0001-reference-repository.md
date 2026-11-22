@@ -1,14 +1,14 @@
 # ADR 0001: 参考仓库与新引擎边界
 
-- 状态：阶段 0 已记录，远程参考 fork 已建立；完整 Git 历史克隆受网络限制未完成
-- 日期：2026-11-21
+- 状态：阶段 0 已记录，远程参考 fork 与完整 Git 历史 clone 已验证
+- 日期：2026-11-22
 - 范围：Ren'Py 兼容性参考、Go 编译器基线、Rust 运行时基线
 
 ## 决策
 
-Ren'Py 保持为独立的参考 fork 和兼容性 fixture 来源。新引擎仓库不复制 Ren'Py Python 包或运行时实现；Go 编译器和 Rust 运行时在本仓库内并列维护，阶段 0 只使用标准库。当前本地目录是新引擎候选仓库，远程 `origin` 已核验为 `https://github.com/yelusiku537/SuiYu-GameEditor`；远程默认分支为 `main`，阶段 0 实施分支为 `codex/phase0-complete`，当前提交为 `995ae1669a6bb7ea2f8f9430ba752443eebd8782`（`ci: make RenPy smoke quit deterministic`）。
+Ren'Py 保持为独立的参考 fork 和兼容性 fixture 来源。新引擎仓库不复制 Ren'Py Python 包或运行时实现；Go 编译器和 Rust 运行时在本仓库内并列维护，阶段 0 只使用标准库。当前本地目录是新引擎候选仓库，远程 `origin` 已核验为 `https://github.com/yelusiku537/SuiYu-GameEditor`；远程默认分支为 `main`，阶段 0 实施分支为 `codex/phase0-complete`。
 
-Ren’Py fork 已由 `yelusiku537` 建立并通过 GitHub API 核验为公开仓库，默认分支为 `master`。Git Smart HTTP 经本机加速器返回 403，SSH over port 443 在完成克隆前长时间停滞，因此本次没有把不完整的 pack 当作完整 clone。项目外 `D:\my-project\renpy-reference` 保留了 `master` 树的 1200 个源码/文档文件 API 快照及 `TREE_MANIFEST.tsv`；该目录仅供阶段 1 源码分析，不能替代带历史的参考仓库。
+Ren’Py fork 已由 `yelusiku537` 建立并通过 GitHub API 核验为公开仓库，默认分支为 `master`。完整 clone 位于 `D:\my-project\renpy-reference-git`，保留 19,649 个提交和完整 blob；`origin` 指向 fork，`upstream` 指向官方仓库，`upstream` push URL 固定为不可用地址。项目外 `D:\my-project\renpy-reference` 的源码快照继续保留，供不需要 Git 历史的快速分析使用。
 
 ## 仓库地址与责任
 
@@ -21,10 +21,10 @@ Ren’Py fork 已由 `yelusiku537` 建立并通过 GitHub API 核验为公开仓
 
 | 项目 | 值 | 证据状态 |
 | --- | --- | --- |
-| Ren'Py Windows SDK | 8.6.1；官方发布页 `https://www.renpy.org/release/8.6.1`；Windows SDK ZIP 复验 SHA-256 `596c31be88b351de64166276708278a70f24e833be7181e7c37b8c106a0f0fdb` | 发布版本与归档指纹已登记；本机下载受网络限制，GitHub Actions run `44918120739` 已完成下载、校验、解压和 fixture 运行 |
-| Ren'Py upstream tag | `8.6.1.26111705` | 官方远程材料已取得；未执行本地 `git show` |
-| 完整参考提交 SHA | `de379eb4f85a4930244786c715e581a1cb3fd374` | GitHub API 已核验该提交存在；本地完整 clone 尚未完成，未执行本地 `git show` |
-| 本次 fixture | `compatibility-tests/fixtures/renpy/phase0` | 新引擎自编原创样例，待独立 SDK GUI 验收 |
+| Ren'Py Windows SDK | 8.6.1；官方发布页 `https://www.renpy.org/release/8.6.1`；Windows SDK ZIP 复验 SHA-256 `596c31be88b351de64166276708278a70f24e833be7181e7c37b8c106a0f0fdb` | 发布版本、归档指纹和 GitHub Actions run `44920257611` 的下载、校验、解压、lint、GUI smoke 均已核验 |
+| Ren'Py upstream tag | `8.6.1.26111705`；tag object `a2ded0b29fd1e0b61972469cfc558a910e717e3c`；peeled commit `de379eb4f85a4930244786c715e581a1cb3fd374` | `D:\my-project\renpy-reference-git` 本地 `git show` 已核验 |
+| 完整参考提交 SHA | `de379eb4f85a4930244786c715e581a1cb3fd374` | 本地完整 clone `git show`、`git fsck --full` 已通过 |
+| 本次 fixture | `compatibility-tests/fixtures/renpy/phase0` | 新引擎自编原创样例；本地 SDK lint 与增强 GUI smoke 已通过；CI 旧 smoke 已通过，增强 widget/return/退出断言等待本轮 CI；人工观察仍单独标注 |
 
 ## 只读上游同步步骤
 
@@ -57,7 +57,7 @@ git merge-base --is-ancestor "refs/remotes/upstream/$RenpyDefaultBranch" "refs/r
 | 项目 | 当前记录 |
 | --- | --- |
 | Ren’Py fork 地址、可见性、默认分支 | `https://github.com/yelusiku537/renpy`，public，`master`；fork 头 `0be2c7103be5d537d9e6cad54ee44ce34c9422a` |
-| 完整参考提交 SHA 与 fork Git 退出码 | API 已核验 `de379eb4f85a4930244786c715e581a1cb3fd374`；本地 clone 因 403/停滞未完成，`--is-shallow-repository` 等本地历史检查未验证 |
+| 完整参考提交 SHA 与 fork Git 退出码 | `D:\my-project\renpy-reference-git`：`--is-shallow-repository=false`，`rev-list --count HEAD=19649`，`git show de379eb4f85a4930244786c715e581a1cb3fd374` 成功，`git fsck --full` 退出码 0；`merge-base --is-ancestor refs/remotes/upstream/master refs/remotes/origin/master` 退出码 0 |
 | 参考提交许可核对 | GitHub API tree `67624ee443dd2dd03993d50e8e889459a528ad1e`；`sphinx/source/license.rst` blob `f4068def0d31d8d87cd9c7c9e665381b0cce1705`，记录 MIT/LGPL/依赖许可证；本仓库未复制其文件 |
 | 新引擎许可证 | 阶段 0 自有代码采用 MIT，见根目录 `LICENSE` 与 `LICENSES/THIRD_PARTY.md` |
 | Go module import path | `github.com/yelusiku537/SuiYu-GameEditor/compiler-go`，按本地 origin 暂定 |

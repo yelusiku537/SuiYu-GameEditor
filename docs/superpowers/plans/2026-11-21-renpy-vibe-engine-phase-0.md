@@ -37,8 +37,8 @@
 
 ### 任务 1　建立参考 fork 与新引擎工程边界
 
-- [ ] 在 GitHub 从官方仓库 `https://github.com/renpy/renpy` 创建参考 fork，使用完整克隆并保留原始 Git 历史。若界面提供「仅复制默认分支」选项，取消它。等 fork 建成后分别确认 `origin` 指向所选 fork、`upstream` 指向官方仓库。
-- [ ] 在参考仓库配置 `upstream` 获取地址和本地不可用的推送地址。先检查现有配置：只有 `upstream` 不存在时才添加，其余情形先核对原配置。以后用 `fetch` 获取官方状态。需要更新 fork 的时候，先比较差异；可快进时按项目协作规范更新 `origin`，分叉时保留现状并在单独分支处理。
+- [x] 在 GitHub 从官方仓库 `https://github.com/renpy/renpy` 创建参考 fork，使用完整克隆并保留原始 Git 历史。若界面提供「仅复制默认分支」选项，取消它。等 fork 建成后分别确认 `origin` 指向所选 fork、`upstream` 指向官方仓库。
+- [x] 在参考仓库配置 `upstream` 获取地址和本地不可用的推送地址。先检查现有配置：只有 `upstream` 不存在时才添加，其余情形先核对原配置。以后用 `fetch` 获取官方状态。需要更新 fork 的时候，先比较差异；可快进时按项目协作规范更新 `origin`，分叉时保留现状并在单独分支处理。
 
 ~~~powershell
 # 在参考仓库根目录执行。$RenpyDefaultBranch 来自官方 HEAD，先填入已核验的分支名。
@@ -52,7 +52,7 @@ git rev-parse "refs/remotes/upstream/$RenpyDefaultBranch"
 git merge-base --is-ancestor "refs/remotes/upstream/$RenpyDefaultBranch" "refs/remotes/origin/$RenpyDefaultBranch"
 ~~~
 
-- [ ] 检查 `--is-shallow-repository` 输出 `false`。祖先检查的退出码为 0 才能证明 fork 默认分支包含本次获取的官方分支头；退出码为 1 时记录分支差异并处理同步，其他非零值按 Git 错误排查。用 `git show <已选官方提交 SHA>` 查验后续样例对照采用的历史提交，记录完整 SHA。
+- [x] 检查 `--is-shallow-repository` 输出 `false`。祖先检查的退出码为 0 才能证明 fork 默认分支包含本次获取的官方分支头；退出码为 1 时记录分支差异并处理同步，其他非零值按 Git 错误排查。用 `git show <已选官方提交 SHA>` 查验后续样例对照采用的历史提交，记录完整 SHA。
 - [x] 将现有项目目录作为候选新引擎仓库。若已经是 Git 仓库，沿用历史，核对远程和默认分支。若只是计划目录，按已确认的仓库决策初始化。阶段 0 先创建本阶段有内容的 Go、Rust、示例、文档与检查目录。
 - [x] 写 ADR，包含决策、两个仓库的地址和责任、Ren’Py 对照提交 SHA、只读上游同步步骤、兼容性材料的归属、第三方内容进入新仓库的条件。保留 Go 工具与 Rust 运行时的边界，Ren’Py fork 的 Python 包结构沿用上游。
 
@@ -162,7 +162,7 @@ $RenpyExe = Join-Path $RenpySdk 'renpy.exe'
 & $RenpyExe $FixtureProject run --savedir $FixtureSaveDir
 ~~~
 
-- [x] 检查 lint 退出码和实际诊断；在 Windows runner 桌面会话中自动启动 GUI，匹配 fixture 窗口标题、发送继续键、验证进程继续运行并正常关闭。人工桌面观察仍单独标为未验证，README 和验收记录保留该限制。
+- [ ] 检查 lint 退出码和实际诊断；在 Windows runner 中自动启动 GUI，匹配 fixture 窗口标题、发送继续键、验证精确文本进入 say Text widget、到达 `return` 并正常退出。固定 SDK 的本地完整 smoke 已通过；仍需本轮 CI 通过后补记 runner 证据并完成此项。
 
 **验收记录。** SDK/归档散列、上游 tag/SHA、lint 输出、系统版本及 GUI 观察结果。图形验收需在有桌面会话的 Windows 环境完成。
 
@@ -188,7 +188,7 @@ $RenpyExe = Join-Path $RenpySdk 'renpy.exe'
 
 - [x] 使用一个干净克隆或等价的全新工作副本，按 README 安装工具并跑完整检查。记录执行日期、测试提交 SHA、操作系统与架构、安装和检查命令、退出码、实际输出与日志地址。用任务 4 的 Git 命令留存构建前后对照。
 - [x] 写 `docs/development/phase0-verification.md`，将下面六条逐项标为「通过」「失败」或「未验证」。缺少证据时对应项保持「未验证」。验收关口汇总两个最小程序的结果、CI 链接、Ren’Py 桌面记录、已知限制及下一阶段输入。
-- [x] 交接阶段 1 所需的参考 fork 地址、官方 tag/SHA、SDK 来源/版本/归档散列、兼容性 fixture 根目录、已验证的启动命令、第三方台账和关于两仓库关系的 ADR。阶段 1 可先使用 `D:\my-project\renpy-reference` 源码快照开始源码分析；完整历史 clone 仍在验收记录中明确标为未验证，SDK lint 和自动 GUI smoke 已有 CI 证据。
+- [x] 交接阶段 1 所需的参考 fork 地址、官方 tag/SHA、SDK 来源/版本/归档散列、兼容性 fixture 根目录、已验证的启动命令、第三方台账和关于两仓库关系的 ADR。阶段 1 可使用 `D:\my-project\renpy-reference-git` 的完整历史 clone 或 `D:\my-project\renpy-reference` 源码快照开始源码分析；完整历史、SDK lint 和自动 GUI smoke 均已有证据。
 
 ## 3. 阶段 0 验收清单
 
@@ -196,7 +196,7 @@ $RenpyExe = Join-Path $RenpySdk 'renpy.exe'
 |---|---|---|
 | 新成员可按 README 在干净环境完成构建 | 按文档在干净 Windows 工作副本完成格式、测试、构建和两个程序启动 | 任务 2、4、7 的命令、实际输出、退出码 |
 | CI 无本地缓存完成最小项目构建 | 干净 Windows runner 关掉恢复缓存，用空目录跑完同一检查入口 | 任务 6 的 job 链接与日志 |
-| Ren’Py 原版单独启动并运行最小示例 | 固定的官方 SDK 完成 lint，桌面启动后读到文本、继续并正常退出 | 任务 5 的版本、lint 和 GUI 记录 |
+| Ren’Py 原版单独启动并运行最小示例 | 固定的官方 SDK 完成 lint，桌面通过 say Text widget 展示原文，继续后到达 `return` 并正常退出 | 任务 5 的版本、lint 和本轮 CI GUI 证据 |
 | 所有复制、参考或链接的第三方内容都有来源 | 逐项核对来源、版本、许可、采用方式和项目路径 | 任务 2、3 的版本表、许可证台账和原始声明 |
 | Git 状态不出现构建缓存和个人文件 | 忽略规则探针全部命中，跟踪对象不受误伤，构建前后 Git 状态没有新增缓存、构建或个人文件 | 任务 4、7 的 `git check-ignore` 和 `git status` 输出 |
 | 至少一份 ADR 解释两个仓库的关系 | ADR 可定位参考 fork、上游、参考提交和独立新引擎仓库，并写明同步和内容边界 | 任务 1 的 ADR 与 Git 检查记录 |

@@ -74,31 +74,98 @@ jobs:
         run: |
           $project = Join-Path $env:RUNNER_TEMP 'renpy-fixture-gui'
           $saveDir = Join-Path $env:RUNNER_TEMP 'renpy-fixture-save'
+          $evidence = Join-Path $env:RUNNER_TEMP 'renpy-fixture-gui-evidence.txt'
           New-Item -ItemType Directory -Path $project -Force | Out-Null
           Copy-Item -LiteralPath './compatibility-tests/fixtures/renpy/phase0/game' -Destination $project -Recurse
-          @'
+          $evidenceLiteral = $evidence.Replace('\', '\\').Replace('"', '\"')
+          @"
           init python:
               config.window_title = "SuiYu phase 0 fixture"
               config.quit_action = renpy.quit
+              config.developer = True
+              _ci_saw_say_statement = False
+              _ci_fixture_text_seen = False
+              _ci_fixture_returned = False
+              def _ci_write_evidence(line):
+                  with open("$evidenceLiteral", "a", encoding="utf-8") as evidence_file:
+                      evidence_file.write(line + "\n")
+              def _ci_say_screen_shown(text):
+                  global _ci_fixture_text_seen, _ci_saw_say_statement
+                  say_widget = renpy.get_widget("say", "what")
+                  if say_widget is not None:
+                      rendered_text = "".join(part for part in say_widget.text if isinstance(part, str))
+                  else:
+                      rendered_text = None
+                  if _ci_saw_say_statement and text == "SuiYu phase 0 fixture" and rendered_text == text:
+                      _ci_fixture_text_seen = True
+                      _ci_saw_say_statement = False
+                      config.window_title = "SuiYu phase 0 fixture - text"
+                      _ci_write_evidence("text=SuiYu phase 0 fixture")
               def _ci_statement(name):
+                  global _ci_fixture_returned, _ci_saw_say_statement
                   if name == "say":
+                      _ci_saw_say_statement = True
                       config.window_title = "SuiYu phase 0 fixture - dialogue"
+                  elif name == "return" and _ci_fixture_text_seen:
+                      _ci_fixture_returned = True
+                      _ci_write_evidence("statement=return")
               config.statement_callbacks.append(_ci_statement)
-          '@ | Set-Content -LiteralPath (Join-Path $project 'game/ci_window_title.rpy') -Encoding utf8
+          "@ | Set-Content -LiteralPath (Join-Path $project 'game/ci_window_title.rpy') -Encoding utf8
+          @'
+          screen say(who, what):
+              window id "window":
+                  vbox:
+                      if who:
+                          text who id "who"
+                      text what id "what"
+              on "show" action Function(_ci_say_screen_shown, what)
+          '@ | Add-Content -LiteralPath (Join-Path $project 'game/ci_window_title.rpy') -Encoding utf8
           $process = Start-Process -FilePath $env:RENpy_EXE -ArgumentList @($project, 'run', '--savedir', $saveDir) -PassThru
-          Start-Sleep -Seconds 8
-          if ($process.HasExited) { throw "Ren'Py GUI exited during startup with code $($process.ExitCode)" }
-          $window = Get-Process | Where-Object { $_.MainWindowTitle -and $_.MainWindowTitle -like '*SuiYu phase 0 fixture*' } | Select-Object -First 1
-          if ($null -eq $window) { throw "Ren'Py GUI did not expose the fixture window title" }
-          $shell = New-Object -ComObject WScript.Shell
-          if (-not $shell.AppActivate($window.Id)) { throw "Ren'Py GUI window could not be activated" }
-          $shell.SendKeys('{ENTER}')
-          $deadline = [DateTime]::UtcNow.AddSeconds(5)
-          do {
+          try {
+            $startupDeadline = [DateTime]::UtcNow.AddSeconds(60)
+            do {
+              Start-Sleep -Milliseconds 250
+              $process.Refresh()
+              if ($process.HasExited) { throw "Ren'Py GUI exited during startup with code $($process.ExitCode)" }
+              $window = Get-Process -Id $process.Id -ErrorAction SilentlyContinue
+            } while (($null -eq $window -or [string]::IsNullOrWhiteSpace($window.MainWindowTitle)) -and [DateTime]::UtcNow -lt $startupDeadline)
+            if ($null -eq $window) { throw "Ren'Py GUI process disappeared during startup" }
+            if ($window.MainWindowTitle -notlike '*SuiYu phase 0 fixture*') { throw "Ren'Py GUI did not expose the fixture window title" }
+            $shell = New-Object -ComObject WScript.Shell
+            if (-not $shell.AppActivate($window.Id)) { throw "Ren'Py GUI window could not be activated" }
+            $shell.SendKeys('{ENTER}')
+            $deadline = [DateTime]::UtcNow.AddSeconds(10)
+            do {
+              Start-Sleep -Milliseconds 250
+              $window.Refresh()
+            } while ($window.MainWindowTitle -notlike '*SuiYu phase 0 fixture - text*' -and [DateTime]::UtcNow -lt $deadline)
+            if ($window.MainWindowTitle -notlike '*SuiYu phase 0 fixture - text*') { throw "Ren'Py GUI did not display the exact fixture text" }
+            if (-not (Test-Path -LiteralPath $evidence)) { throw "Ren'Py GUI did not record the exact fixture text" }
+            $evidenceText = Get-Content -LiteralPath $evidence -Raw
+            if ($evidenceText -notlike '*text=SuiYu phase 0 fixture*') { throw "Ren'Py GUI text evidence was incomplete" }
+            if (-not $shell.AppActivate($window.Id)) { throw "Ren'Py GUI window could not be reactivated" }
             Start-Sleep -Milliseconds 250
-            $window.Refresh()
-          } while ($window.MainWindowTitle -notlike '*SuiYu phase 0 fixture - dialogue*' -and [DateTime]::UtcNow -lt $deadline)
-          if ($window.MainWindowTitle -notlike '*SuiYu phase 0 fixture - dialogue*') { throw "Ren'Py GUI did not reach the fixture dialogue" }
-          if ($window.HasExited) { throw "Ren'Py GUI exited before returning from the fixture label" }
-          if (-not $window.CloseMainWindow()) { throw "Ren'Py GUI close request failed" }
-          if (-not $window.WaitForExit(10000)) { Stop-Process -Id $window.Id -Force; throw "Ren'Py GUI did not close normally" }
+            $shell.SendKeys('{ENTER}')
+            $deadline = [DateTime]::UtcNow.AddSeconds(10)
+            do {
+              Start-Sleep -Milliseconds 250
+              if (Test-Path -LiteralPath $evidence) { $evidenceText = Get-Content -LiteralPath $evidence -Raw }
+            } while ($evidenceText -notlike '*statement=return*' -and [DateTime]::UtcNow -lt $deadline)
+            if ($evidenceText -notlike '*statement=return*') { throw "Ren'Py GUI did not execute the fixture return" }
+            Start-Sleep -Seconds 1
+            $process.Refresh()
+            if (-not $process.HasExited) {
+              $window = Get-Process -Id $process.Id
+              if (-not $window.CloseMainWindow()) { throw "Ren'Py GUI close request failed after the fixture return" }
+              if (-not $process.WaitForExit(10000)) { throw "Ren'Py GUI did not close normally after the fixture return" }
+            }
+            if ($process.ExitCode -ne 0) { throw "Ren'Py GUI exited with code $($process.ExitCode)" }
+          } finally {
+            if (-not $process.HasExited) {
+              if ($null -ne $window -and $window.CloseMainWindow()) {
+                if (-not $process.WaitForExit(5000)) { Stop-Process -Id $process.Id -Force }
+              } else {
+                Stop-Process -Id $process.Id -Force
+              }
+            }
+          }

@@ -33,7 +33,7 @@ CI 使用相同入口，配置见 `.github/workflows/phase0.yml`。失败时先�
 
 ## Ren'Py 对照 fixture
 
-fixture 位于 `compatibility-tests/fixtures/renpy/phase0`，必须复制到项目外的一次性目录，并使用固定的官方 Ren'Py Windows SDK。lint、自动 GUI smoke、SDK 指纹及人工验收限制见 [阶段 0 验收记录](docs/development/phase0-verification.md)。参考 fork 为 `https://github.com/yelusiku537/renpy`；当前保留了源码快照，但完整历史克隆仍受网络限制，参考边界见 [ADR 0001](docs/adr/0001-reference-repository.md)。
+fixture 位于 `compatibility-tests/fixtures/renpy/phase0`，必须复制到项目外的一次性目录，并使用固定的官方 Ren'Py Windows SDK。lint、自动 GUI smoke、SDK 指纹及人工验收限制见 [阶段 0 验收记录](docs/development/phase0-verification.md)。参考 fork 为 `https://github.com/yelusiku537/renpy`；完整历史 clone 已在 `D:\my-project\renpy-reference-git` 验证，源码快照仍保留供快速分析，参考边界见 [ADR 0001](docs/adr/0001-reference-repository.md)。
 
 ## 协作
 
