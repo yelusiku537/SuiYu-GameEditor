@@ -21,10 +21,10 @@ Ren’Py fork 已由 `yelusiku537` 建立并通过 GitHub API 核验为公开仓
 
 | 项目 | 值 | 证据状态 |
 | --- | --- | --- |
-| Ren'Py Windows SDK | 8.6.1；官方发布页 `https://www.renpy.org/release/8.6.1`；Windows SDK ZIP 复验 SHA-256 `596c31be88b351de64166276708278a70f24e833be7181e7c37b8c106a0f0fdb` | 发布版本、归档指纹和 GitHub Actions run `44920257611` 的下载、校验、解压、lint、GUI smoke 均已核验 |
+| Ren'Py Windows SDK | 8.6.1；官方发布页 `https://www.renpy.org/release/8.6.1`；Windows SDK ZIP 复验 SHA-256 `596c31be88b351de64166276708278a70f24e833be7181e7c37b8c106a0f0fdb` | 发布版本、归档指纹和 GitHub Actions run `44982689865` 的下载、校验、解压、lint、增强 GUI smoke 均已核验 |
 | Ren'Py upstream tag | `8.6.1.26111705`；tag object `a2ded0b29fd1e0b61972469cfc558a910e717e3c`；peeled commit `de379eb4f85a4930244786c715e581a1cb3fd374` | `D:\my-project\renpy-reference-git` 本地 `git show` 已核验 |
 | 完整参考提交 SHA | `de379eb4f85a4930244786c715e581a1cb3fd374` | 本地完整 clone `git show`、`git fsck --full` 已通过 |
-| 本次 fixture | `compatibility-tests/fixtures/renpy/phase0` | 新引擎自编原创样例；本地 SDK lint 与增强 GUI smoke 已通过；CI 旧 smoke 已通过，增强 widget/return/退出断言等待本轮 CI；人工观察仍单独标注 |
+| 本次 fixture | `compatibility-tests/fixtures/renpy/phase0` | 新引擎自编原创样例；本地 SDK lint 与增强 GUI smoke、CI run `44982689865` 的精确文本 widget/return/正常退出断言均已通过；人工像素观察未执行 |
 
 ## 只读上游同步步骤
 

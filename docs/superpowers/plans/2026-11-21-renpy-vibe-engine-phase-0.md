@@ -162,7 +162,7 @@ $RenpyExe = Join-Path $RenpySdk 'renpy.exe'
 & $RenpyExe $FixtureProject run --savedir $FixtureSaveDir
 ~~~
 
-- [ ] 检查 lint 退出码和实际诊断；在 Windows runner 中自动启动 GUI，匹配 fixture 窗口标题、发送继续键、验证精确文本进入 say Text widget、到达 `return` 并正常退出。固定 SDK 的本地完整 smoke 已通过；仍需本轮 CI 通过后补记 runner 证据并完成此项。
+- [x] 检查 lint 退出码和实际诊断；在 Windows runner 中自动启动 GUI，匹配 fixture 窗口标题、发送继续键、验证精确文本进入 say Text widget、到达 `return` 并正常退出。固定 SDK 的本地完整 smoke 与 GitHub Actions run `44982689865` 均通过；runner 证据见 `docs/development/phase0-verification.md`。
 
 **验收记录。** SDK/归档散列、上游 tag/SHA、lint 输出、系统版本及 GUI 观察结果。图形验收需在有桌面会话的 Windows 环境完成。
 
