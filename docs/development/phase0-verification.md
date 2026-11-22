@@ -128,3 +128,4 @@ Ren'Py 许可补证：GitHub API 在提交 `de379eb4f85a4930244786c715e581a1cb3f
 - `renpy-fixture`：固定 Ren'Py 8.6.1 SDK 下载和 SHA-256 校验、fixture lint、Windows GUI 启动和窗口标题断言均通过。自动 GUI smoke 从 say screen 的 `what` Text widget 读取并精确匹配 `SuiYu phase 0 fixture`，发送继续键后确认执行 `return`，再确认正常关闭且进程退出码为 `0`。
 - `windows-baseline`：Go/Rust 格式、测试、构建和启动检查均通过。
 - 该自动 smoke 满足任务 5 的计划验收；没有执行人工像素观察。不能由此推断阶段 1 语义兼容性、完整桌面体验或性能。
+- 验收记录提交 `e825c16ce41fb1c32e2b449762b0b4ac51803315` 对应的后续 CI run [44983550537](https://github.com/yelusiku537/SuiYu-GameEditor/actions/runs/44983550537) 也已通过；该 run 的 `windows-baseline` 与 `renpy-fixture` 均成功，确认记录这组验收结论的提交本身仍通过完整工作流。
