@@ -6,7 +6,7 @@
 
 ## 决策
 
-Ren'Py 保持为独立的参考 fork 和兼容性 fixture 来源。新引擎仓库不复制 Ren'Py Python 包或运行时实现；Go 编译器和 Rust 运行时在本仓库内并列维护，阶段 0 只使用标准库。当前本地目录是新引擎候选仓库，远程 `origin` 已核验为 `https://github.com/yelusiku537/SuiYu-GameEditor`；远程默认分支为 `main`，阶段 0 实施分支为 `codex/phase0-complete`。
+Ren'Py 保持为独立的参考 fork 和兼容性 fixture 来源。新引擎仓库不复制 Ren'Py Python 包或运行时实现；Go 编译器和 Rust 运行时在本仓库内并列维护，阶段 0 只使用标准库。当前本地目录是新引擎候选仓库，远程 `origin` 已核验为 `https://github.com/yelusiku537/SuiYu-GameEditor`；远程默认分支为 `master`（另有仍停留在初始提交的 `main` 分支，不用于开发），阶段 0 实施分支为 `codex/phase0-complete`。
 
 Ren’Py fork 已由 `yelusiku537` 建立并通过 GitHub API 核验为公开仓库，默认分支为 `master`。完整 clone 位于 `D:\my-project\renpy-reference-git`，保留 19,649 个提交和完整 blob；`origin` 指向 fork，`upstream` 指向官方仓库，`upstream` push URL 固定为不可用地址。项目外 `D:\my-project\renpy-reference` 的源码快照继续保留，供不需要 Git 历史的快速分析使用。
 
@@ -14,7 +14,7 @@ Ren’Py fork 已由 `yelusiku537` 建立并通过 GitHub API 核验为公开仓
 
 | 仓库 | 地址 | 可见性 | 默认分支 | 责任 |
 | --- | --- | --- | --- | --- |
-| 新引擎工程 | `https://github.com/yelusiku537/SuiYu-GameEditor`（本地 origin 已核验） | public | `main`（远程默认分支；阶段 0 工作分支为 `codex/phase0-complete`） | Go 编译器、Rust 运行时、fixture、文档与 CI |
+| 新引擎工程 | `https://github.com/yelusiku537/SuiYu-GameEditor`（本地 origin 已核验） | public | `master`（远程默认分支；`main` 仅有初始提交，不用于开发；阶段 0 工作分支为 `codex/phase0-complete`） | Go 编译器、Rust 运行时、fixture、文档与 CI |
 | Ren’Py 参考 fork | `https://github.com/yelusiku537/renpy`（官方上游 `https://github.com/renpy/renpy`） | public | `master` | 保存参考历史、兼容性对照材料和上游同步上下文 |
 
 ## 对照坐标

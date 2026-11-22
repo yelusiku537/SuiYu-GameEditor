@@ -33,10 +33,10 @@ CI 使用相同入口，配置见 `.github/workflows/phase0.yml`。失败时先�
 
 ## Ren'Py 对照 fixture
 
-fixture 位于 `compatibility-tests/fixtures/renpy/phase0`，必须复制到项目外的一次性目录，并使用固定的官方 Ren'Py Windows SDK。lint、自动 GUI smoke、SDK 指纹及人工验收限制见 [阶段 0 验收记录](docs/development/phase0-verification.md)。参考 fork 为 `https://github.com/yelusiku537/renpy`；完整历史 clone 已在 `D:\my-project\renpy-reference-git` 验证，源码快照仍保留供快速分析，参考边界见 [ADR 0001](docs/adr/0001-reference-repository.md)。
+fixture 位于 `compatibility-tests/fixtures/renpy/phase0`，必须复制到项目外的一次性目录，并使用固定的官方 Ren'Py Windows SDK。lint、自动 GUI smoke、SDK 指纹及人工验收限制见 [阶段 0 验收记录](docs/development/phase0-verification.md)。参考 fork 为 `https://github.com/yelusiku537/renpy`；完整历史 clone 已在本地验证（含 19,649 个提交、`git fsck --full` 退出码 0），源码快照仍保留供快速分析，参考边界见 [ADR 0001](docs/adr/0001-reference-repository.md)。
 
 ## 协作
 
-查看[总计划](renpy-vibe-engine-plan.md)和[各阶段详细计划](docs/superpowers/plans/README.md)。阶段任务编号可用于 Issue 认领和 PR 关联。
+查看[项目进度与协作者看板](docs/PROJECT_STATUS.md)、[总计划](renpy-vibe-engine-plan.md)和[各阶段详细计划](docs/superpowers/plans/README.md)。阶段任务编号可用于 Issue 认领和 PR 关联。
 
 格式、测试、fixture、许可证和提交约定见 [CONTRIBUTING.md](CONTRIBUTING.md)。第三方来源见 [许可证台账](LICENSES/THIRD_PARTY.md)。
