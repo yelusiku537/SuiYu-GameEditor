@@ -1,0 +1,19 @@
+{"file": "game/script.rpy", "kind": "stmt", "label": "first_label", "line": 17, "node": "Label", "ret": 0, "what": null, "who": null}
+{"abnormal": true, "kind": "label", "label": "first_label"}
+{"file": "game/script.rpy", "kind": "stmt", "line": 18, "node": "TranslateSay", "ret": 0, "what": "in first label", "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 19, "node": "Jump", "ret": 0, "what": null, "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "label": "second_label", "line": 22, "node": "Label", "ret": 0, "what": null, "who": null}
+{"abnormal": true, "kind": "label", "label": "second_label"}
+{"file": "game/script.rpy", "kind": "stmt", "line": 23, "node": "TranslateSay", "ret": 0, "what": "in second label", "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "label": "start", "line": 13, "node": "Label", "ret": 0, "what": null, "who": null}
+{"abnormal": true, "kind": "label", "label": "start"}
+{"file": "game/script.rpy", "kind": "stmt", "line": 14, "node": "Jump", "ret": 0, "what": null, "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "label": "first_label", "line": 17, "node": "Label", "ret": 0, "what": null, "who": null}
+{"abnormal": true, "kind": "label", "label": "first_label"}
+{"file": "game/script.rpy", "kind": "stmt", "line": 18, "node": "TranslateSay", "ret": 0, "what": "in first label", "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 19, "node": "Jump", "ret": 0, "what": null, "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "label": "second_label", "line": 22, "node": "Label", "ret": 0, "what": null, "who": null}
+{"abnormal": true, "kind": "label", "label": "second_label"}
+{"file": "game/script.rpy", "kind": "stmt", "line": 23, "node": "TranslateSay", "ret": 0, "what": "in second label", "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 24, "node": "Python", "ret": 0, "what": null, "who": null}
+{"kind": "flow_complete"}

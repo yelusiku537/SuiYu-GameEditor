@@ -1,0 +1,28 @@
+{"file": "game/script.rpy", "kind": "stmt", "label": "start", "line": 24, "node": "Label", "ret": 0, "what": null, "who": null}
+{"abnormal": true, "kind": "label", "label": "start"}
+{"file": "game/script.rpy", "kind": "stmt", "line": 25, "node": "Python", "ret": 0, "what": null, "who": null}
+{"kind": "layer_initial", "state": [{"name": ["bg", "hall"], "tag": "bg", "zorder": 0}, {"name": ["bob"], "tag": "bob", "zorder": 5}]}
+{"file": "game/script.rpy", "kind": "stmt", "line": 26, "node": "Scene", "ret": 0, "what": null, "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 27, "node": "Python", "ret": 0, "what": null, "who": null}
+{"kind": "layer_after_scene", "state": [{"name": ["bg", "room"], "tag": "bg", "zorder": 0}]}
+{"file": "game/script.rpy", "kind": "stmt", "line": 28, "node": "Show", "ret": 0, "what": null, "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 29, "node": "Show", "ret": 0, "what": null, "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 30, "node": "Python", "ret": 0, "what": null, "who": null}
+{"kind": "layer_after_shows", "state": [{"name": ["bg", "room"], "tag": "bg", "zorder": 0}, {"name": ["alice", "neutral"], "tag": "alice", "zorder": 0}, {"name": ["bob"], "tag": "bob", "zorder": 0}]}
+{"file": "game/script.rpy", "kind": "stmt", "line": 31, "node": "Show", "ret": 0, "what": null, "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 32, "node": "Python", "ret": 0, "what": null, "who": null}
+{"kind": "layer_after_replace", "state": [{"name": ["bg", "room"], "tag": "bg", "zorder": 0}, {"name": ["alice", "happy"], "tag": "alice", "zorder": 0}, {"name": ["bob"], "tag": "bob", "zorder": 0}]}
+{"file": "game/script.rpy", "kind": "stmt", "line": 33, "node": "Hide", "ret": 0, "what": null, "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 34, "node": "Python", "ret": 0, "what": null, "who": null}
+{"kind": "layer_after_hide", "state": [{"name": ["bg", "room"], "tag": "bg", "zorder": 0}, {"name": ["bob"], "tag": "bob", "zorder": 0}]}
+{"file": "game/script.rpy", "kind": "stmt", "line": 35, "node": "Scene", "ret": 0, "what": null, "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 36, "node": "Python", "ret": 0, "what": null, "who": null}
+{"kind": "layer_after_clear", "state": [{"name": ["bg", "hall"], "tag": "bg", "zorder": 0}]}
+{"file": "game/script.rpy", "kind": "stmt", "line": 37, "node": "Show", "ret": 0, "what": null, "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 38, "node": "Python", "ret": 0, "what": null, "who": null}
+{"kind": "layer_after_zorder", "state": [{"name": ["bg", "hall"], "tag": "bg", "zorder": 0}, {"name": ["bob"], "tag": "bob", "zorder": 5}]}
+{"file": "game/script.rpy", "kind": "stmt", "line": 39, "node": "TranslateSay", "ret": 0, "what": "display checked", "who": null}
+{"bytes": 7749, "kind": "screenshot", "name": "display_final_layer", "present": true, "sha256": "fe6a10be0630840552d0e5090c60bd111c507e9044aad0bb509373ddfdb96e61"}
+{"kind": "test_pause"}
+{"file": "game/script.rpy", "kind": "stmt", "line": 40, "node": "Python", "ret": 0, "what": null, "who": null}
+{"kind": "flow_complete"}

@@ -1,0 +1,8 @@
+{"kind": "stmt", "node": "TranslateSay", "what": "plain narration", "who": null}
+{"kind": "screenshot", "name": "say_plain_narration", "present": true}
+{"kind": "stmt", "node": "TranslateSay", "what": "character line", "who": "e"}
+{"kind": "stmt", "node": "TranslateSay", "what": "line with quoted text"}
+{"kind": "stmt", "node": "TranslateSay", "what": "narrator explicit", "who": "narrator"}
+{"kind": "stmt", "node": "TranslateSay", "what": "substitution [name_var]", "who": "e"}
+{"kind": "stmt", "node": "TranslateSay", "what": "two words"}
+{"kind": "flow_complete"}

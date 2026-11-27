@@ -1,0 +1,26 @@
+{"file": "game/script.rpy", "kind": "stmt", "label": "start", "line": 15, "node": "Label", "ret": 0, "what": null, "who": null}
+{"abnormal": true, "kind": "label", "label": "start"}
+{"file": "game/script.rpy", "kind": "stmt", "line": 16, "node": "TranslateSay", "ret": 0, "what": "A", "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 17, "node": "Python", "ret": 0, "what": null, "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 18, "node": "TranslateSay", "ret": 0, "what": "B", "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 19, "node": "Python", "ret": 0, "what": null, "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 20, "node": "Python", "ret": 0, "what": null, "who": null}
+{"can_rollback": true, "counter": 2, "kind": "at_b"}
+{"file": "game/script.rpy", "kind": "stmt", "line": 21, "node": "TranslateSay", "ret": 0, "what": "C", "who": null}
+{"can_rollback": true, "counter": 2, "kind": "test_at_b"}
+{"file": "game/script.rpy", "kind": "stmt", "line": 22, "node": "Python", "ret": 0, "what": null, "who": null}
+{"can_rollback": true, "counter": 2, "kind": "at_c"}
+{"file": "game/script.rpy", "kind": "stmt", "line": 23, "node": "Python", "ret": 0, "what": null, "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 19, "node": "Python", "ret": 0, "what": null, "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 20, "node": "Python", "ret": 0, "what": null, "who": null}
+{"can_rollback": true, "counter": 2, "kind": "at_b"}
+{"file": "game/script.rpy", "kind": "stmt", "line": 21, "node": "TranslateSay", "ret": 0, "what": "C", "who": null}
+{"counter": 2, "kind": "test_after_rollback"}
+{"file": "game/script.rpy", "kind": "stmt", "line": 22, "node": "Python", "ret": 0, "what": null, "who": null}
+{"can_rollback": true, "counter": 2, "kind": "at_c"}
+{"file": "game/script.rpy", "kind": "stmt", "line": 23, "node": "Python", "ret": 0, "what": null, "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 19, "node": "Python", "ret": 0, "what": null, "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 20, "node": "Python", "ret": 0, "what": null, "who": null}
+{"can_rollback": true, "counter": 2, "kind": "at_b"}
+{"file": "game/script.rpy", "kind": "stmt", "line": 21, "node": "TranslateSay", "ret": 0, "what": "C", "who": null}
+{"counter": 2, "kind": "test_done"}

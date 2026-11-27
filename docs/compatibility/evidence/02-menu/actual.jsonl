@@ -1,0 +1,30 @@
+{"file": "game/script.rpy", "kind": "stmt", "label": "start", "line": 15, "node": "Label", "ret": 0, "what": null, "who": null}
+{"abnormal": true, "kind": "label", "label": "start"}
+{"file": "game/script.rpy", "kind": "stmt", "line": 16, "node": "Menu", "ret": 0, "what": null, "who": null}
+{"bytes": 7127, "kind": "screenshot", "name": "menu_choice_shown", "present": true, "sha256": "007b5d5262184817d405329b858f22e02754ea46b997b99058b70f21d111857f"}
+{"file": "game/script.rpy", "kind": "stmt", "line": 22, "node": "Python", "ret": 0, "what": null, "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 23, "node": "Python", "ret": 0, "what": null, "who": null}
+{"kind": "choice_taken", "which": "B"}
+{"file": "game/script.rpy", "kind": "stmt", "line": 24, "node": "TranslateSay", "ret": 0, "what": "chose B", "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 25, "node": "Python", "ret": 0, "what": null, "who": null}
+{"kind": "after_first_menu", "log": ["B"]}
+{"file": "game/script.rpy", "kind": "stmt", "line": 26, "node": "TranslateSay", "ret": 0, "what": "after first menu", "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "label": "start", "line": 15, "node": "Label", "ret": 0, "what": null, "who": null}
+{"abnormal": true, "kind": "label", "label": "start"}
+{"file": "game/script.rpy", "kind": "stmt", "line": 16, "node": "Menu", "ret": 0, "what": null, "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 18, "node": "Python", "ret": 0, "what": null, "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 19, "node": "Python", "ret": 0, "what": null, "who": null}
+{"kind": "choice_taken", "which": "A"}
+{"file": "game/script.rpy", "kind": "stmt", "line": 20, "node": "TranslateSay", "ret": 0, "what": "chose A", "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 25, "node": "Python", "ret": 0, "what": null, "who": null}
+{"kind": "after_first_menu", "log": ["A"]}
+{"file": "game/script.rpy", "kind": "stmt", "line": 26, "node": "TranslateSay", "ret": 0, "what": "after first menu", "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 27, "node": "Menu", "ret": 0, "what": null, "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 29, "node": "Menu", "ret": 0, "what": null, "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 31, "node": "Python", "ret": 0, "what": null, "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 32, "node": "Python", "ret": 0, "what": null, "who": null}
+{"kind": "nested_choice_taken", "log": ["A", "inner-one"]}
+{"file": "game/script.rpy", "kind": "stmt", "line": 33, "node": "TranslateSay", "ret": 0, "what": "inner one chosen", "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 34, "node": "Python", "ret": 0, "what": null, "who": null}
+{"kind": "after_nested_menu", "log": ["A", "inner-one"]}
+{"file": "game/script.rpy", "kind": "stmt", "line": 35, "node": "TranslateSay", "ret": 0, "what": "after nested menu", "who": null}

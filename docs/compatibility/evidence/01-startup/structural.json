@@ -1,0 +1,41 @@
+{
+  "compile": {
+    "cache_rpyb": [
+      "bytecode-312.rpyb",
+      "py3analysis.rpyb",
+      "screens.rpyb"
+    ],
+    "exit": 0,
+    "rpyc": [
+      "script.rpyc",
+      "zz_evidence.rpyc"
+    ]
+  },
+  "engine_sdk": "renpy-8.6.1-sdk",
+  "engine_version_reported": null,
+  "source_map": {
+    "define": {
+      "startup_marker": [
+        "game/script.rpy",
+        18
+      ],
+      "startup_order": [
+        "game/script.rpy",
+        19
+      ]
+    },
+    "label": {
+      "start": [
+        "game/script.rpy",
+        27
+      ]
+    },
+    "screen": {
+      "say": [
+        "game/script.rpy",
+        9
+      ]
+    },
+    "transform": {}
+  }
+}

@@ -1,0 +1,4 @@
+{"kind": "label", "label": "start"}
+{"has_start": true, "kind": "startup_state", "marker": "defined", "order": ["init_default", "init_100"]}
+{"kind": "stmt", "node": "TranslateSay", "what": "startup chain reached start"}
+{"kind": "flow_complete"}

@@ -1,0 +1,7 @@
+{"can_load": true, "kind": "save_done", "points": 3, "stage": "pre-save"}
+{"kind": "post_save_mutation", "points": 99, "stage": "mutated"}
+{"kind": "label", "label": "loader_main"}
+{"kind": "loader_before", "stage": "init"}
+{"kind": "label", "label": "after_load"}
+{"kind": "after_load_hook", "points": 0, "stage": "init"}
+{"kind": "save_done", "points": 3, "stage": "pre-save"}

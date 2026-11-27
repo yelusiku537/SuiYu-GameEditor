@@ -1,0 +1,5 @@
+{"kind": "default_initial", "listed": [], "named": "unset", "points": 0}
+{"kind": "default_mutated", "listed": ["x"], "named": "changed", "points": 5}
+{"kind": "default_after_save", "named": "after-save", "points": 99}
+{"kind": "test_barrier", "points": 99}
+{"kind": "flow_complete"}

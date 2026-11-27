@@ -1,0 +1,19 @@
+{"file": "game/script.rpy", "kind": "stmt", "label": "start", "line": 18, "node": "Label", "ret": 0, "what": null, "who": null}
+{"abnormal": true, "kind": "label", "label": "start"}
+{"file": "game/script.rpy", "kind": "stmt", "line": 19, "node": "Python", "ret": 0, "what": null, "who": null}
+{"kind": "default_initial", "listed": [], "named": "unset", "points": 0}
+{"file": "game/script.rpy", "kind": "stmt", "line": 20, "node": "If", "ret": 0, "what": null, "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 21, "node": "Python", "ret": 0, "what": null, "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 22, "node": "Python", "ret": 0, "what": null, "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 23, "node": "Python", "ret": 0, "what": null, "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 24, "node": "Python", "ret": 0, "what": null, "who": null}
+{"kind": "default_mutated", "listed": ["x"], "named": "changed", "points": 5}
+{"file": "game/script.rpy", "kind": "stmt", "line": 25, "node": "Python", "ret": 0, "what": null, "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 26, "node": "Python", "ret": 0, "what": null, "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 27, "node": "Python", "ret": 0, "what": null, "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 28, "node": "Python", "ret": 0, "what": null, "who": null}
+{"kind": "default_after_save", "named": "after-save", "points": 99}
+{"file": "game/script.rpy", "kind": "stmt", "line": 29, "node": "TranslateSay", "ret": 0, "what": "checkpoint line", "who": null}
+{"kind": "test_barrier", "points": 99}
+{"file": "game/script.rpy", "kind": "stmt", "line": 30, "node": "Python", "ret": 0, "what": null, "who": null}
+{"kind": "flow_complete"}

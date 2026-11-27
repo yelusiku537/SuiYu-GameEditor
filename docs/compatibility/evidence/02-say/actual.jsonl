@@ -1,0 +1,11 @@
+{"file": "game/script.rpy", "kind": "stmt", "label": "start", "line": 16, "node": "Label", "ret": 0, "what": null, "who": null}
+{"abnormal": true, "kind": "label", "label": "start"}
+{"file": "game/script.rpy", "kind": "stmt", "line": 17, "node": "TranslateSay", "ret": 0, "what": "plain narration", "who": null}
+{"bytes": 4908, "kind": "screenshot", "name": "say_plain_narration", "present": true, "sha256": "fa3598eeff7a975086f83e4385e947b62a65ff3091836e5bc432c412439f58ef"}
+{"file": "game/script.rpy", "kind": "stmt", "line": 18, "node": "TranslateSay", "ret": 0, "what": "character line", "who": "e"}
+{"file": "game/script.rpy", "kind": "stmt", "line": 19, "node": "TranslateSay", "ret": 0, "what": "line with quoted text", "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 20, "node": "TranslateSay", "ret": 0, "what": "narrator explicit", "who": "narrator"}
+{"file": "game/script.rpy", "kind": "stmt", "line": 21, "node": "TranslateSay", "ret": 0, "what": "substitution [name_var]", "who": "e"}
+{"file": "game/script.rpy", "kind": "stmt", "line": 22, "node": "TranslateSay", "ret": 0, "what": "two words", "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 23, "node": "Python", "ret": 0, "what": null, "who": null}
+{"kind": "flow_complete"}

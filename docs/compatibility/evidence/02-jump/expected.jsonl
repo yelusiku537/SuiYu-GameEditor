@@ -1,0 +1,6 @@
+{"kind": "stmt", "node": "TranslateSay", "what": "before jump"}
+{"kind": "label", "label": "destination"}
+{"kind": "stmt", "node": "TranslateSay", "what": "at destination"}
+{"kind": "label", "label": "skip_middle"}
+{"kind": "label", "label": "final_label"}
+{"kind": "stmt", "node": "TranslateSay", "what": "at final label"}

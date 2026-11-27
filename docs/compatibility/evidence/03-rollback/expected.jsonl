@@ -1,0 +1,5 @@
+{"can_rollback": true, "counter": 2, "kind": "at_b"}
+{"counter": 2, "kind": "at_c"}
+{"counter": 2, "kind": "at_b"}
+{"counter": 2, "kind": "test_after_rollback"}
+{"counter": 2, "kind": "test_done"}

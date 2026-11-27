@@ -1,0 +1,5 @@
+{"kind": "transition_before", "marker": "room_shown"}
+{"kind": "transition_after_dissolve", "marker": "dissolved_in"}
+{"kind": "transition_after_fade", "marker": "hall_faded"}
+{"kind": "screenshot", "name": "transition_final", "present": true}
+{"kind": "flow_complete"}

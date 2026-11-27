@@ -1,0 +1,2 @@
+{"char_name": "DefinedChar", "computed": 42, "config_value": 42, "greeting": "hello", "kind": "define_values"}
+{"kind": "stmt", "node": "TranslateSay", "what": "define checked"}

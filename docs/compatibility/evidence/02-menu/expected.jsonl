@@ -1,0 +1,9 @@
+{"kind": "stmt", "node": "Menu"}
+{"kind": "screenshot", "name": "menu_choice_shown", "present": true}
+{"kind": "choice_taken", "which": "B"}
+{"kind": "stmt", "node": "TranslateSay", "what": "chose B"}
+{"kind": "after_first_menu", "log": ["B"]}
+{"kind": "stmt", "node": "TranslateSay", "what": "after first menu"}
+{"kind": "nested_choice_taken", "log": ["A", "inner-one"]}
+{"kind": "after_nested_menu", "log": ["A", "inner-one"]}
+{"kind": "stmt", "node": "TranslateSay", "what": "after nested menu"}

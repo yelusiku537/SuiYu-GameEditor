@@ -1,0 +1,35 @@
+name: phase01
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  windows-phase01:
+    runs-on: windows-2025
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download and verify Ren'Py SDK 8.6.1
+        shell: pwsh
+        run: |
+          $url = 'https://www.renpy.org/dl/8.6.1/renpy-8.6.1-sdk.zip'
+          $expected = '596c31be88b351de64166276708278a70f24e833be7181e7c37b8c106a0f0fdb'
+          $archive = Join-Path $env:RUNNER_TEMP 'renpy-8.6.1-sdk.zip'
+          Invoke-WebRequest -Uri $url -OutFile $archive
+          $actual = (Get-FileHash -LiteralPath $archive -Algorithm SHA256).Hash.ToLowerInvariant()
+          if ($actual -ne $expected) { throw "Ren'Py SDK SHA-256 mismatch: $actual" }
+          $sdk = Join-Path $env:RUNNER_TEMP 'renpy-sdk'
+          Expand-Archive -LiteralPath $archive -DestinationPath $sdk -Force
+          $exe = Get-ChildItem -LiteralPath $sdk -Filter renpy.exe -Recurse | Select-Object -First 1
+          if ($null -eq $exe) { throw 'renpy.exe not found after extraction' }
+          "SUIYU_RENPY_SDK=$($exe.DirectoryName)" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8
+
+      - name: Run phase 01 checks
+        shell: pwsh
+        run: |
+          pwsh -NoProfile -File ./scripts/phase01-check.ps1 -RenpySdk $env:SUIYU_RENPY_SDK
