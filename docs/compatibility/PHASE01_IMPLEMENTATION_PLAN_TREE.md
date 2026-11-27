@@ -16,7 +16,7 @@
 | 自动化入口 | `renpy.exe <project> test <testcase> --savedir <dir>` 无需人工输入即可运行到结束 | `renpy/test/testcli.py` `test_command` |
 | 语句观测 | `config.statement_callbacks` 回调可取得当前节点 `type().__name__`、`filename`、`linenumber`、`what`、`who`、`name`、`len(context.return_stack)` | `renpy/ast.py` `statement_name`、`renpy/execution.py` `Context` |
 | label 观测 | `config.label_callback(label, abnormal)` 记录非 `_` 前缀 label | `renpy/execution.py` |
-| 轨迹确定性 | 同一 fixture 连续 5 次运行，JSONL 逐字节一致 | 本地实测，见 §3 N01-05 |
+| 轨迹确定性 | 同一 fixture 连续 3 次运行，JSONL 逐字节一致 | 本地实测，见 §3 N01-05 |
 | 退出码 | 用例通过 → `0`；`failed` → `1`；`timeout` → `1` | `renpy/test/testexecution.py` `quit_handler` |
 | 退出稳定写法 | `click <text>` 之后紧跟 `exit`（中间不得有 `advance`），否则用例挂起超时 | 本地实测 |
 | 阻塞等待 | `advance until eval <flag>` 需要下一次交互才生效；纯 Python 赋值后无交互会“Possible infinite loop” | 本地实测 |
@@ -47,7 +47,9 @@ docs/compatibility/
         ├── actual.jsonl           # 提交的实际轨迹（确定性）
         ├── expected.jsonl         # 提交的预期轨迹（人工审定的基线）
         ├── run.log                # 提交的运行摘要（exit code + Status 行）
-        └── screenshots.manifest.json  # 截图清单：名称、相对路径、字节数、SHA-256
+        └── run.log                 # 运行摘要（exit code + Status 行 + 记录统计）
+        # 截图元数据（name/present/bytes/sha256）内嵌于 actual.jsonl；
+        # 不单独提交 screenshots.manifest.json，也不提交 PNG 本体。
 
 compatibility-tests/fixtures/renpy/phase01/
 ├── README.md
@@ -211,9 +213,9 @@ compatibility-tests/fixtures/renpy/phase01/
 
 | 字段 | 内容 |
 | --- | --- |
-| 目标 | 固定 SDK fixture 检查入口：定位 SDK、校验 SHA-256、隔离目录、逐 fixture lint + test + 证据比对 |
+| 目标 | 固定 SDK fixture 检查入口：定位 SDK、校验引擎版本与 harness 指纹、隔离目录、逐 fixture lint + test + 证据比对（SDK ZIP 的 SHA-256 由 CI workflow 负责校验） |
 | 依赖 | N01-02..N01-09 |
-| 输入 | `-RenpySdk <path>` 或 `SUIYU_RENPY_SDK` / `RENPY_SDK`；缺省时按约定路径探测 |
+| 输入 | `-RenpySdk <path>` 或 `SUIYU_RENPY_SDK`；缺省时按约定路径探测 |
 | 产出 | `scripts/phase01-check.ps1` |
 | 验收 | 可从仓库根调用；缓存与产物写仓库外临时目录；全部 fixture 通过则退出码 0；任一失败退出码非 0 并打印失败 fixture 与临时目录 |
 | 风险 | CI 无 SDK 时需下载 → workflow 负责下载与验签，脚本只消费已存在的 SDK |

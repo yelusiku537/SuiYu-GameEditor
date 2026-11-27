@@ -1,9 +1,14 @@
 [CmdletBinding()]
 param(
     [string]$RenpySdk = $env:SUIYU_RENPY_SDK,
-    [string]$SdkArchiveSha256 = '596c31be88b351de64166276708278a70f24e833be7181e7c37b8c106a0f0fdb',
     [switch]$KeepWork
 )
+
+# Expected SDK ZIP fingerprint. The .github/workflows/phase01.yml job downloads
+# the ZIP and verifies this SHA-256; the script only consumes an already-unpacked
+# SDK, so here it just pins the value in the banner for cross-checking against
+# the workflow and the per-behavior docs.
+$script:SdkArchiveSha256 = '596c31be88b351de64166276708278a70f24e833be7181e7c37b8c106a0f0fdb'
 
 $ErrorActionPreference = 'Stop'
 $RepoRoot = (Resolve-Path (Join-Path $PSScriptRoot '..')).Path
@@ -72,7 +77,10 @@ function Invoke-Renpy {
     )
     $stdout = Join-Path $LogDirectory ('stdout-' + [guid]::NewGuid().ToString('N') + '.txt')
     $stderr = Join-Path $LogDirectory ('stderr-' + [guid]::NewGuid().ToString('N') + '.txt')
-    $process = Start-Process -FilePath $RenpyExe -ArgumentList (@($Project) + $Arguments) `
+    # Quote the project path so a TEMP/work dir containing spaces still reaches
+    # Ren'Py as a single basedir argument (Start-Process does not auto-quote).
+    $quotedProject = '"' + $Project + '"'
+    $process = Start-Process -FilePath $RenpyExe -ArgumentList (@($quotedProject) + $Arguments) `
         -Wait -PassThru -NoNewWindow -RedirectStandardOutput $stdout -RedirectStandardError $stderr
     $text = ''
     if (Test-Path -LiteralPath $stdout) { $text += (Get-Content -LiteralPath $stdout -Raw) }
@@ -133,6 +141,7 @@ function Test-Subsequence {
 
 $RenpyExe = Resolve-RenpyExe -Sdk $RenpySdk
 Write-Host "==> Ren'Py SDK: $RenpyExe"
+Write-Host "    expected ZIP SHA-256: $script:SdkArchiveSha256"
 $version = (& $RenpyExe --version 2>&1 | Select-Object -First 1)
 Write-Host "    version: $version"
 if ($version -notmatch '8\.6\.1') {

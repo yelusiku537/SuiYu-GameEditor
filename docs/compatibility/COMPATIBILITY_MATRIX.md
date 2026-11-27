@@ -14,7 +14,7 @@
 | B02 | `label` 定义与进入 | 必须兼容 | [`02-label`](evidence/02-label/) | `p01-02-label` | 阶段 1；交阶段 4 | [label.md](label.md) |
 | B03 | `jump` 跳转 | 必须兼容 | [`02-jump`](evidence/02-jump/) | `p01-02-jump` | 阶段 1；交阶段 4 | [jump.md](jump.md) |
 | B04 | `call` / `return` 调用返回位置、嵌套 | 必须兼容 | [`02-call-return`](evidence/02-call-return/) | `p01-02-call-return` | 阶段 1；交阶段 4 | [call-return.md](call-return.md) |
-| B05 | `say` 对白（who/what、多行、转义） | 必须兼容 | [`02-say`](evidence/02-say/) | `p01-02-say` | 阶段 1；交阶段 4–5 | [say.md](say.md) |
+| B05 | `say` 对白的 who/what 与原始文本保留（多行/转义未断言） | 必须兼容 | [`02-say`](evidence/02-say/) | `p01-02-say` | 阶段 1；交阶段 4–5 | [say.md](say.md) |
 | B06 | `menu` 菜单及继续位置、嵌套 | 必须兼容 | [`02-menu`](evidence/02-menu/) | `p01-02-menu` | 阶段 1；交阶段 4–5 | [menu.md](menu.md) |
 | B07 | `define` 常量与初始化时序 | 必须兼容 | [`02-define`](evidence/02-define/) | `p01-02-define` | 阶段 1；交阶段 4–5 | [variables.md](variables.md) |
 | B08 | `default` 初始化与读档默认值 | 必须兼容 | [`02-default`](evidence/02-default/) | `p01-02-default` | 阶段 1；交阶段 4–5 | [variables.md](variables.md) |

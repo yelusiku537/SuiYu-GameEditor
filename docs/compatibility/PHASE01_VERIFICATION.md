@@ -11,11 +11,11 @@
 | 项目 | 值 |
 | --- | --- |
 | 引擎 | Ren'Py `8.6.1.26111705` |
-| SDK | `renpy-8.6.1-sdk`（Windows ZIP SHA-256 `596c31be…0f0fdb`），本地解压于仓库外 `D:\temp\renpy-sdk-verified-20261122-root\renpy-8.6.1-sdk` |
-| 对照源码 | `D:\my-project\renpy-reference-git`，提交 `de379eb4f85a4930244786c715e581a1cb3fd374` |
+| SDK | `renpy-8.6.1-sdk`（Windows ZIP SHA-256 `596c31be…0f0fdb`），解压在仓库之外的临时目录 |
+| 对照源码 | 同提交 `de379eb4f85a4930244786c715e581a1cb3fd374` 的 Ren'Py 源码克隆（置于仓库外，路径从略） |
 | 平台 / shell | Windows 11 x64；PowerShell 7（`pwsh -NoProfile`） |
 | 证据通道 | Ren'Py 内置 `test` 命令 + `config.statement_callbacks`/`label_callback` 回调生成 JSONL；无人工点击 |
-| Python（辅助脚本，不入库） | `C:\Users\yuki\AppData\Local\Programs\Python\Python311\python.exe` |
+| Python（辅助脚本，不入库） | 仅用于证据生成/校验的本地 Python 3；不随仓库分发 |
 
 ## 2. 执行命令与退出码
 
@@ -77,7 +77,7 @@ Phase 01 checks passed (14 fixtures).
 | `p01-03-rollback` | `rollback_restores` | 26 | 0 | OK |
 | `p01-03-screen-atl-python` | `screen_atl_python` | 18 | 0 | OK |
 
-检查脚本执行的校验（`scripts/phase01-check.ps1`）：① 解析并校验 SDK 版本含 `8.6.1`；② 校验每个 fixture 的 `game/zz_evidence.rpy` 与 `harness/zz_evidence.rpy` SHA-256 逐字节一致；③ 每 fixture 复制 `game` 到仓库外临时项目并 `lint --error-code`；④ 每 testcase 以独立进程运行并要求退出码 `0` 且输出含 `Status: PASSED`；⑤ 非截图记录与实际基线 `actual.jsonl` **逐字节**一致（截图只比 `name`+`present`）；⑥ `expected.jsonl` 作为**有序子序列**在 `actual.jsonl` 中命中。
+检查脚本执行的校验（`scripts/phase01-check.ps1`）：① 解析 SDK 并校验引擎版本含 `8.6.1`（SDK ZIP 的 SHA-256 由 `.github/workflows/phase01.yml` 在下载时校验，脚本本身只消费已解压的 SDK）；② 校验每个 fixture 的 `game/zz_evidence.rpy` 与 `harness/zz_evidence.rpy` SHA-256 逐字节一致；③ 每 fixture 复制 `game` 到仓库外临时项目并 `lint --error-code`；④ 每 testcase 以独立进程运行并要求退出码 `0` 且输出含 `Status: PASSED`；⑤ 非截图记录与实际基线 `actual.jsonl` **逐字节**一致（截图只比 `name`+`present`）；⑥ `expected.jsonl` 作为**有序子序列**在 `actual.jsonl` 中命中。
 
 ## 4. 证据路径
 

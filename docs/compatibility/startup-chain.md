@@ -31,7 +31,7 @@
 | default | `renpy/common/00start.rpy:215 renpy.execute_default_statement(True)` | 在跳到 `start` 之前执行默认值初始化 |
 | 主菜单 | `renpy/common/00start.rpy:298 label _invoke_main_menu`；`:305 call_in_new_context("_main_menu")`；`:316 label _main_menu` | 进入独立上下文的 `_main_menu` |
 | 跳到 start | `renpy/common/00start.rpy:312 renpy.jump("start")` | 主菜单返回后进入剧本 `start` |
-| 源码地图 | `renpy/arguments.py:169 --json-dump`；`renpy/dump.py:63 dump`，`:537` 由 `renpy/main.py` 调用 | `run --json-dump` 写出 `location.label/define/screen` 映射 |
+| 源码地图 | `renpy/arguments.py:169 --json-dump`；`renpy/dump.py:63 dump`，由 `renpy/main.py:537` 调用 | `run --json-dump` 写出 `location.label/define/screen` 映射 |
 | 编译命令 | `renpy/arguments.py:316`（`compile` 分支）与 `:329 register_command("compile", compile)` | 单独执行编译并落盘产物 |
 
 priority 的来源：`renpy/parser.py:1152 init_statement` 把 `init [N] python:` 解析为 priority `N`（缺省 0）的 `Init`；`:934 define_statement` 与 `:983 default_statement` 在 `create_init` 时包成 `ast.Init(loc, [rv], priority + l.init_offset)`（缺省 0）。因此 `define`/`default` 与 `init python:` 同处 priority 0，`init 100 python:` 为 priority 100。

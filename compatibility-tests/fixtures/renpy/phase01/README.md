@@ -34,4 +34,4 @@ $env:SUIYU_EVIDENCE = Join-Path $Work 'actual.jsonl'
 pwsh -NoProfile -File ./scripts/phase01-check.ps1 -RenpySdk $env:SUIYU_RENPY_SDK
 ```
 
-写作约定、证据格式与 testcase 约束见 [docs/compatibility/README.md](../../../docs/compatibility/README.md)。
+写作约定、证据格式与 testcase 约束见 [docs/compatibility/README.md](../../../../docs/compatibility/README.md)。
