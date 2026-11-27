@@ -98,9 +98,9 @@ testcase <name>:
 
 ## 6. 产物隔离位置
 
-- SDK 本体与解压目录：仓库外，例如 `D:\temp\renpy-sdk-verified-20261122-root\renpy-8.6.1-sdk`，由环境变量 `SUIYU_RENPY_SDK` 或 `-RenpySdk` 指定。
+- SDK 本体与解压目录：仓库外临时目录，由环境变量 `SUIYU_RENPY_SDK` 或 `-RenpySdk` 指定。
 - 运行期一次性项目副本、`--savedir`、截图 PNG、临时日志：全部写入仓库外临时目录，由检查脚本创建并清理。
-- 仓库内只保留：fixture 源码、`evidence/<id>/actual.jsonl`、`expected.jsonl`、`run.log`、`screenshots.manifest.json`（可选，与 `actual.jsonl` 中的 `screenshot` 记录等价）。
+- 仓库内只保留：fixture 源码、`evidence/<id>/actual.jsonl`、`expected.jsonl`、`run.log`。截图元数据（name/present/bytes/sha256）内嵌于 `actual.jsonl`，不单独提交清单文件，也不提交 PNG 本体。
 
 ## 7. 复验命令
 

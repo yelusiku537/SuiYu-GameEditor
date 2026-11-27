@@ -46,8 +46,7 @@ docs/compatibility/
     └── <fixture-id>/
         ├── actual.jsonl           # 提交的实际轨迹（确定性）
         ├── expected.jsonl         # 提交的预期轨迹（人工审定的基线）
-        ├── run.log                # 提交的运行摘要（exit code + Status 行）
-        └── run.log                 # 运行摘要（exit code + Status 行 + 记录统计）
+        └── run.log                # 运行摘要（exit code + Status 行 + 记录统计）
         # 截图元数据（name/present/bytes/sha256）内嵌于 actual.jsonl；
         # 不单独提交 screenshots.manifest.json，也不提交 PNG 本体。
 
@@ -77,7 +76,7 @@ compatibility-tests/fixtures/renpy/phase01/
 | B02 | `label` 定义与进入 | 必须兼容 | `p01-02-label` | `label.md` |
 | B03 | `jump` 跳转 | 必须兼容 | `p01-02-jump` | `jump.md` |
 | B04 | `call` / `return` 调用返回位置、嵌套 | 必须兼容 | `p01-02-call-return` | `call-return.md` |
-| B05 | `say` 对白（who/what、多行、转义） | 必须兼容 | `p01-02-say` | `say.md` |
+| B05 | `say` 对白的 who/what 与原始文本保留（多行/转义未断言） | 必须兼容 | `p01-02-say` | `say.md` |
 | B06 | `menu` 菜单及其继续位置、嵌套 | 必须兼容 | `p01-02-menu` | `menu.md` |
 | B07 | `define` 常量与初始化时序 | 必须兼容 | `p01-02-define` | `variables.md` |
 | B08 | `default` 初始化与读档默认值 | 必须兼容 | `p01-02-default` | `variables.md` |

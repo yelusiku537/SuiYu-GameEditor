@@ -63,7 +63,7 @@
 ## 5. 下游阶段引用面
 
 - 阶段 3、7：B09 图层状态模型（`scene`/`show`/`hide`/`zorder` 的条目集合语义）。
-- 阶段 4：B02–B04 控制流（`label`/`jump`/`call`/`return` 与返回栈深度），B05/B06 对白与菜单续行。
+- 阶段 4：B02–B04 控制流（`label`/`jump`/`call`/`return` 与返回栈深度），B05/B06 对白（who/what 与原始文本）与菜单续行。
 - 阶段 4–5：B07/B08 初始化时序（`define` init 求值、`default` start 前初始化与显式覆盖），B12 读档默认值补齐。
 - 阶段 6：B12 存档/读档跨进程恢复，B13 回滚状态与控制位置恢复。
 - 阶段 8：B14 screen/ATL/嵌入 Python 静态子集与待研究清单。

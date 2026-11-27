@@ -22,13 +22,13 @@
 ### 2.1 全量入口（实跑）
 
 ```powershell
-pwsh -NoProfile -File ./scripts/phase01-check.ps1 -RenpySdk 'D:\temp\renpy-sdk-verified-20261122-root\renpy-8.6.1-sdk'
+pwsh -NoProfile -File ./scripts/phase01-check.ps1 -RenpySdk '<sdk-dir>'
 ```
 
 实跑输出（节选，2026-11-22）：
 
 ```text
-==> Ren'Py SDK: D:\temp\renpy-sdk-verified-20261122-root\renpy-8.6.1-sdk\renpy.exe
+==> Ren'Py SDK: <sdk-dir>\renpy.exe
     version: 8.6.1.26111705
 ==> Harness copies match (SHA-256 014B9F54ABC2DD1FC71D781AD00F7FDC0BCCEFCB9F8F4D5D4203416B0BFF77B0)
 ==> p01-01-startup
