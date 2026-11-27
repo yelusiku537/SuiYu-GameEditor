@@ -1,0 +1,11 @@
+{"kind": "stmt", "node": "Call", "ret": 0}
+{"kind": "stmt", "label": "sub_one", "node": "Label", "ret": 1}
+{"kind": "label", "label": "sub_one"}
+{"kind": "stmt", "node": "TranslateSay", "ret": 1, "what": "in sub one"}
+{"kind": "stmt", "node": "Call", "ret": 1}
+{"kind": "stmt", "label": "sub_two", "node": "Label", "ret": 2}
+{"kind": "stmt", "node": "Return", "ret": 2}
+{"kind": "stmt", "node": "TranslateSay", "ret": 1, "what": "back in sub one"}
+{"kind": "stmt", "node": "Return", "ret": 1}
+{"kind": "stmt", "node": "TranslateSay", "ret": 0, "what": "outer after"}
+{"kind": "stmt", "node": "TranslateSay", "what": "after empty call"}

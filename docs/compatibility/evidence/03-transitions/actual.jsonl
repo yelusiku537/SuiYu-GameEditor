@@ -1,0 +1,17 @@
+{"file": "game/script.rpy", "kind": "stmt", "label": "start", "line": 16, "node": "Label", "ret": 0, "what": null, "who": null}
+{"abnormal": true, "kind": "label", "label": "start"}
+{"file": "game/script.rpy", "kind": "stmt", "line": 17, "node": "Scene", "ret": 0, "what": null, "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 18, "node": "Python", "ret": 0, "what": null, "who": null}
+{"kind": "transition_before", "marker": "room_shown"}
+{"file": "game/script.rpy", "kind": "stmt", "line": 19, "node": "With", "ret": 0, "what": null, "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 20, "node": "Python", "ret": 0, "what": null, "who": null}
+{"kind": "transition_after_dissolve", "marker": "dissolved_in"}
+{"file": "game/script.rpy", "kind": "stmt", "line": 21, "node": "With", "ret": 0, "what": null, "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 21, "node": "Scene", "ret": 0, "what": null, "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 21, "node": "With", "ret": 0, "what": null, "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 22, "node": "Python", "ret": 0, "what": null, "who": null}
+{"kind": "transition_after_fade", "marker": "hall_faded"}
+{"file": "game/script.rpy", "kind": "stmt", "line": 23, "node": "TranslateSay", "ret": 0, "what": "transition checked", "who": null}
+{"bytes": 7453, "kind": "screenshot", "name": "transition_final", "present": true, "sha256": "0b7c5f19a3cba34ee8bafb3fb6fc0ac954b13ad1e73082dacca0c27f745514e4"}
+{"file": "game/script.rpy", "kind": "stmt", "line": 24, "node": "Python", "ret": 0, "what": null, "who": null}
+{"kind": "flow_complete"}

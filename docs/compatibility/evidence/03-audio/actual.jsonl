@@ -1,0 +1,19 @@
+{"file": "game/script.rpy", "kind": "stmt", "label": "start", "line": 20, "node": "Label", "ret": 0, "what": null, "who": null}
+{"abnormal": true, "kind": "label", "label": "start"}
+{"file": "game/script.rpy", "kind": "stmt", "line": 21, "node": "Python", "ret": 0, "what": null, "who": null}
+{"kind": "audio_initial", "music": null, "sound": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 22, "node": "UserStatement", "ret": 0, "what": null, "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 23, "node": "Python", "ret": 0, "what": null, "who": null}
+{"kind": "audio_playing", "music": "audio/tone.ogg", "sound": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 24, "node": "UserStatement", "ret": 0, "what": null, "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 25, "node": "Python", "ret": 0, "what": null, "who": null}
+{"kind": "audio_sound_playing", "music": "audio/tone.ogg", "sound": "audio/tone.ogg"}
+{"file": "game/script.rpy", "kind": "stmt", "line": 26, "node": "UserStatement", "ret": 0, "what": null, "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 27, "node": "Python", "ret": 0, "what": null, "who": null}
+{"kind": "audio_sound_stopped", "music": "audio/tone.ogg", "sound": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 28, "node": "UserStatement", "ret": 0, "what": null, "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 29, "node": "Python", "ret": 0, "what": null, "who": null}
+{"kind": "audio_music_stopped", "music": null, "sound": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 30, "node": "TranslateSay", "ret": 0, "what": "audio checked", "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 31, "node": "Python", "ret": 0, "what": null, "who": null}
+{"kind": "flow_complete"}

@@ -1,0 +1,18 @@
+{"file": "game/script.rpy", "kind": "stmt", "label": "start", "line": 23, "node": "Label", "ret": 0, "what": null, "who": null}
+{"abnormal": true, "kind": "label", "label": "start"}
+{"file": "game/script.rpy", "kind": "stmt", "line": 24, "node": "Python", "ret": 0, "what": null, "who": null}
+{"kind": "screen_initial", "shown": false}
+{"file": "game/script.rpy", "kind": "stmt", "line": 25, "node": "UserStatement", "ret": 0, "what": null, "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 26, "node": "Python", "ret": 0, "what": null, "who": null}
+{"kind": "screen_shown", "shown": true}
+{"file": "game/script.rpy", "kind": "stmt", "line": 27, "node": "Show", "ret": 0, "what": null, "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 28, "node": "Python", "ret": 0, "what": null, "who": null}
+{"in_at_list": true, "kind": "atl_registered"}
+{"file": "game/script.rpy", "kind": "stmt", "line": 29, "node": "Python", "ret": 0, "what": null, "who": null}
+{"kind": "embedded_python", "local_sum": 10}
+{"file": "game/script.rpy", "kind": "stmt", "line": 32, "node": "UserStatement", "ret": 0, "what": null, "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 33, "node": "Python", "ret": 0, "what": null, "who": null}
+{"kind": "screen_hidden", "shown": false}
+{"file": "game/script.rpy", "kind": "stmt", "line": 34, "node": "TranslateSay", "ret": 0, "what": "complex checked", "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 35, "node": "Python", "ret": 0, "what": null, "who": null}
+{"kind": "flow_complete"}

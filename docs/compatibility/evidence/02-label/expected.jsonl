@@ -1,0 +1,5 @@
+{"kind": "label", "label": "first_label"}
+{"kind": "stmt", "node": "TranslateSay", "what": "in first label"}
+{"kind": "label", "label": "second_label"}
+{"kind": "stmt", "node": "TranslateSay", "what": "in second label"}
+{"kind": "flow_complete"}

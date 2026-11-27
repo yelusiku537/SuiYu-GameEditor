@@ -1,0 +1,7 @@
+{"file": "game/script.rpy", "kind": "stmt", "label": "start", "line": 18, "node": "Label", "ret": 0, "what": null, "who": null}
+{"abnormal": true, "kind": "label", "label": "start"}
+{"file": "game/script.rpy", "kind": "stmt", "line": 19, "node": "Python", "ret": 0, "what": null, "who": null}
+{"char_name": "DefinedChar", "computed": 42, "config_value": 42, "greeting": "hello", "kind": "define_values"}
+{"file": "game/script.rpy", "kind": "stmt", "line": 24, "node": "TranslateSay", "ret": 0, "what": "define checked", "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 25, "node": "Python", "ret": 0, "what": null, "who": null}
+{"kind": "flow_complete"}

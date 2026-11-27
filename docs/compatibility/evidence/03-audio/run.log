@@ -1,0 +1,11 @@
+fixture: p01-03-audio
+sdk: renpy-8.6.1-sdk (SHA-256 596c31be88b351de64166276708278a70f24e833be7181e7c37b8c106a0f0fdb)
+reference_commit: de379eb4f85a4930244786c715e581a1cb3fd374
+engine_version: 8.6.1.26111705
+lint_exit: 0
+testcases: audio_lifecycle
+total_records: 19
+record_kinds: {"audio_initial": 1, "audio_music_stopped": 1, "audio_playing": 1, "audio_sound_playing": 1, "audio_sound_stopped": 1, "flow_complete": 1, "label": 1, "stmt": 12}
+
+See actual.jsonl for the full deterministic trace and expected.jsonl for the
+hand-written semantic assertions checked by scripts/phase01-check.ps1.

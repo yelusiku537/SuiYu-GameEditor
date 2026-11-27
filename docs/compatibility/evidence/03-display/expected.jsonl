@@ -1,0 +1,8 @@
+{"kind": "layer_after_scene", "state": [{"name": ["bg", "room"], "tag": "bg", "zorder": 0}]}
+{"kind": "layer_after_shows", "state": [{"tag": "bg"}, {"name": ["alice", "neutral"], "tag": "alice"}, {"tag": "bob"}]}
+{"kind": "layer_after_replace", "state": [{"tag": "bg"}, {"name": ["alice", "happy"], "tag": "alice"}, {"tag": "bob"}]}
+{"kind": "layer_after_hide", "state": [{"tag": "bg"}, {"tag": "bob"}]}
+{"kind": "layer_after_clear", "state": [{"name": ["bg", "hall"], "tag": "bg"}]}
+{"kind": "layer_after_zorder", "state": [{"tag": "bg"}, {"tag": "bob", "zorder": 5}]}
+{"kind": "screenshot", "name": "display_final_layer", "present": true}
+{"kind": "flow_complete"}

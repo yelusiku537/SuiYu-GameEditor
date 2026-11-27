@@ -1,0 +1,6 @@
+{"kind": "audio_initial", "music": null, "sound": null}
+{"kind": "audio_playing", "music": "audio/tone.ogg", "sound": null}
+{"kind": "audio_sound_playing", "music": "audio/tone.ogg", "sound": "audio/tone.ogg"}
+{"kind": "audio_sound_stopped", "music": "audio/tone.ogg", "sound": null}
+{"kind": "audio_music_stopped", "music": null, "sound": null}
+{"kind": "flow_complete"}

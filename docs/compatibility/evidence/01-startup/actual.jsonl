@@ -1,0 +1,8 @@
+{"file": "game/script.rpy", "kind": "stmt", "label": "start", "line": 27, "node": "Label", "ret": 0, "what": null, "who": null}
+{"abnormal": true, "kind": "label", "label": "start"}
+{"file": "game/script.rpy", "kind": "stmt", "line": 28, "node": "Python", "ret": 0, "what": null, "who": null}
+{"has_start": true, "kind": "startup_state", "marker": "defined", "order": ["init_default", "init_100"]}
+{"file": "game/script.rpy", "kind": "stmt", "line": 32, "node": "TranslateSay", "ret": 0, "what": "startup chain reached start", "who": null}
+{"bytes": 6108, "kind": "screenshot", "name": "startup_at_start", "present": true, "sha256": "72eddca63a884efaa725030bb36c3cd4fdd82ab56d115c1b9a7521838746249e"}
+{"file": "game/script.rpy", "kind": "stmt", "line": 33, "node": "Python", "ret": 0, "what": null, "who": null}
+{"kind": "flow_complete"}

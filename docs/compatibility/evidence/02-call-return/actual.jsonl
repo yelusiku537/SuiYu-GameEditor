@@ -1,0 +1,27 @@
+{"file": "game/script.rpy", "kind": "stmt", "label": "start", "line": 13, "node": "Label", "ret": 0, "what": null, "who": null}
+{"abnormal": true, "kind": "label", "label": "start"}
+{"file": "game/script.rpy", "kind": "stmt", "line": 14, "node": "TranslateSay", "ret": 0, "what": "outer before", "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 15, "node": "Call", "ret": 0, "what": null, "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "label": "sub_one", "line": 20, "node": "Label", "ret": 1, "what": null, "who": null}
+{"abnormal": true, "kind": "label", "label": "sub_one"}
+{"file": "game/script.rpy", "kind": "stmt", "line": 21, "node": "TranslateSay", "ret": 1, "what": "in sub one", "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 22, "node": "Call", "ret": 1, "what": null, "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "label": "sub_two", "line": 26, "node": "Label", "ret": 2, "what": null, "who": null}
+{"abnormal": true, "kind": "label", "label": "sub_two"}
+{"file": "game/script.rpy", "kind": "stmt", "line": 27, "node": "TranslateSay", "ret": 2, "what": "in sub two", "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 28, "node": "Return", "ret": 2, "what": null, "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 22, "node": "Pass", "ret": 1, "what": null, "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 23, "node": "TranslateSay", "ret": 1, "what": "back in sub one", "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 24, "node": "Return", "ret": 1, "what": null, "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 15, "node": "Pass", "ret": 0, "what": null, "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 16, "node": "TranslateSay", "ret": 0, "what": "outer after", "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "label": "returns_immediately", "line": 30, "node": "Label", "ret": 0, "what": null, "who": null}
+{"abnormal": true, "kind": "label", "label": "returns_immediately"}
+{"file": "game/script.rpy", "kind": "stmt", "line": 31, "node": "Call", "ret": 0, "what": null, "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "label": "empty_sub", "line": 36, "node": "Label", "ret": 1, "what": null, "who": null}
+{"abnormal": true, "kind": "label", "label": "empty_sub"}
+{"file": "game/script.rpy", "kind": "stmt", "line": 37, "node": "Return", "ret": 1, "what": null, "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 31, "node": "Pass", "ret": 0, "what": null, "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 32, "node": "TranslateSay", "ret": 0, "what": "after empty call", "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 33, "node": "Python", "ret": 0, "what": null, "who": null}
+{"kind": "flow_complete"}

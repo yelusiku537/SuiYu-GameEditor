@@ -1,0 +1,31 @@
+{"file": "game/script.rpy", "kind": "stmt", "label": "start", "line": 28, "node": "Label", "ret": 0, "what": null, "who": null}
+{"abnormal": true, "kind": "label", "label": "start"}
+{"file": "game/script.rpy", "kind": "stmt", "line": 29, "node": "TranslateSay", "ret": 0, "what": "checkpoint line", "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 30, "node": "Python", "ret": 0, "what": null, "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 31, "node": "Python", "ret": 0, "what": null, "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 32, "node": "Python", "ret": 0, "what": null, "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 33, "node": "Python", "ret": 0, "what": null, "who": null}
+{"can_load": true, "kind": "save_done", "points": 3, "stage": "pre-save"}
+{"file": "game/script.rpy", "kind": "stmt", "line": 34, "node": "TranslateSay", "ret": 0, "what": "after save line", "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 35, "node": "Python", "ret": 0, "what": null, "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 36, "node": "Python", "ret": 0, "what": null, "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 37, "node": "Python", "ret": 0, "what": null, "who": null}
+{"kind": "post_save_mutation", "points": 99, "stage": "mutated"}
+{"file": "game/script.rpy", "kind": "stmt", "line": 38, "node": "TranslateSay", "ret": 0, "what": "finish line", "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "label": "loader_main", "line": 49, "node": "Label", "ret": 0, "what": null, "who": null}
+{"abnormal": true, "kind": "label", "label": "loader_main"}
+{"file": "game/script.rpy", "kind": "stmt", "line": 50, "node": "Python", "ret": 0, "what": null, "who": null}
+{"kind": "loader_before", "points": 0, "stage": "init"}
+{"file": "game/script.rpy", "kind": "stmt", "line": 51, "node": "Python", "ret": 0, "what": null, "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "label": "after_load", "line": 42, "node": "Label", "ret": 1, "what": null, "who": null}
+{"abnormal": true, "kind": "label", "label": "after_load"}
+{"file": "game/script.rpy", "kind": "stmt", "line": 45, "node": "Python", "ret": 1, "what": null, "who": null}
+{"kind": "after_load_hook", "points": 0, "stage": "init"}
+{"file": "game/script.rpy", "kind": "stmt", "line": 46, "node": "Python", "ret": 1, "what": null, "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 47, "node": "Return", "ret": 1, "what": null, "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 30, "node": "Python", "ret": 0, "what": null, "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 31, "node": "Python", "ret": 0, "what": null, "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 32, "node": "Python", "ret": 0, "what": null, "who": null}
+{"file": "game/script.rpy", "kind": "stmt", "line": 33, "node": "Python", "ret": 0, "what": null, "who": null}
+{"can_load": true, "kind": "save_done", "points": 3, "stage": "pre-save"}
+{"file": "game/script.rpy", "kind": "stmt", "line": 34, "node": "TranslateSay", "ret": 0, "what": "after save line", "who": null}
